@@ -213,7 +213,7 @@ const LoadingOverlay = styled.div`
 
 const FilterBar = styled.div`
   position: absolute;
-  top: 20px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -223,6 +223,15 @@ const FilterBar = styled.div`
   display: flex;
   gap: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  max-width: 600px;
+
+  @media (max-width: 768px) {
+    padding: 0.25rem;
+    gap: 0.25rem;
+  }
 `;
 
 const FilterButton = styled.button`
@@ -233,6 +242,12 @@ const FilterButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
 
   &:hover {
     background: var(--alpine-teal);

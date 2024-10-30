@@ -1,15 +1,33 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import IFMGA from '../../../public/Logo/IFMGA.png';
 import NZMGA from '../../../public/Logo/NZMGA.png';
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <NavWrapper>
       <Nav>
         <LeftSection>
           <Logo>
-            <Link to="/">Petrouchka Stiner-Grierson</Link>
+            <Link to="/" onClick={() => setIsOpen(false)}>
+              Petrouchka<br />
+              Stiner-<br />
+              Grierson
+            </Link>
           </Logo>
           <CertificationLogos>
             <CertLogo src={IFMGA} alt="IFMGA Certified" />
@@ -17,24 +35,30 @@ const Navigation = () => {
           </CertificationLogos>
         </LeftSection>
 
-        <NavLinks>
+        <HamburgerButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </HamburgerButton>
+
+        <NavLinks isOpen={isOpen}>
           <NavItem>
-            <Link to="/about">About</Link>
+            <Link to="/about" onClick={() => setIsOpen(false)}>About</Link>
           </NavItem>
           <NavItem>
-            <Link to="/climb">Climb</Link>
+            <Link to="/climb" onClick={() => setIsOpen(false)}>Climb</Link>
           </NavItem>
           <NavItem>
-            <Link to="/ski">Ski</Link>
+            <Link to="/ski" onClick={() => setIsOpen(false)}>Ski</Link>
           </NavItem>
           <NavItem>
-            <Link to="/locations">Locations</Link>
+            <Link to="/locations" onClick={() => setIsOpen(false)}>Locations</Link>
           </NavItem>
           <NavItem>
-            <Link to="/faq">FAQ</Link>
+            <Link to="/faq" onClick={() => setIsOpen(false)}>FAQ</Link>
           </NavItem>
           <NavItem>
-            <ContactButton to="/contact">Contact</ContactButton>
+            <ContactButton to="/contact" onClick={() => setIsOpen(false)}>Contact</ContactButton>
           </NavItem>
         </NavLinks>
       </Nav>
@@ -44,17 +68,17 @@ const Navigation = () => {
 
 const NavWrapper = styled.header`
   background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 `;
 
 const Nav = styled.nav`
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,13 +94,12 @@ const Logo = styled.div`
   a {
     color: var(--slate-blue);
     text-decoration: none;
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    line-height: 1.2;
     
-    @media (max-width: 1024px) {
-      font-size: 1.1rem;
+    &:hover {
+      color: var(--alpine-teal);
     }
   }
 `;
@@ -86,7 +109,7 @@ const CertificationLogos = styled.div`
   align-items: center;
   gap: 1rem;
   
-  @media (max-width: 768px) {
+  @media (max-width: 930px) {
     display: none;
   }
 `;
@@ -94,7 +117,6 @@ const CertificationLogos = styled.div`
 const CertLogo = styled.img`
   height: 45px;
   width: auto;
-  transition: opacity 0.2s ease;
   
   @media (max-width: 1024px) {
     height: 40px;
@@ -109,22 +131,28 @@ const NavLinks = styled.ul`
   margin: 0;
   padding: 0;
   
-  @media (max-width: 1024px) {
-    gap: 1.5rem;
+  @media (max-width: 930px) {
+    display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: 1rem;
   }
 `;
 
 const NavItem = styled.li`
-  a {
-    color: var(--slate-blue);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: color 0.2s ease;
+  @media (max-width: 930px) {
+    width: 100%;
+    text-align: center;
     
-    &:hover {
-      color: var(--alpine-teal);
+    a {
+      display: block;
+      padding: 0.75rem;
     }
   }
 `;
@@ -138,7 +166,51 @@ const ContactButton = styled(Link)`
   
   &:hover {
     background: var(--alpine-teal);
-    transform: translateY(-2px);
+  }
+
+  @media (max-width: 930px) {
+    width: 100%;
+    display: block;
+  }
+`;
+
+const HamburgerButton = styled.button`
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+
+  @media (max-width: 930px) {
+    display: flex;
+  }
+
+  span {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--slate-blue);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+
+    &:first-child {
+      transform: ${({ isOpen }) => isOpen ? 'rotate(45deg)' : 'rotate(0)'};
+    }
+
+    &:nth-child(2) {
+      opacity: ${({ isOpen }) => isOpen ? '0' : '1'};
+      transform: ${({ isOpen }) => isOpen ? 'translateX(20px)' : 'translateX(0)'};
+    }
+
+    &:nth-child(3) {
+      transform: ${({ isOpen }) => isOpen ? 'rotate(-45deg)' : 'rotate(0)'};
+    }
   }
 `;
 
