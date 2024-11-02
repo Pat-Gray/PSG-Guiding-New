@@ -23,15 +23,14 @@ const Navigation = () => {
       <Nav>
         <LeftSection>
           <Logo>
-            <Link to="/" onClick={() => setIsOpen(false)}>
+            <Link className='text-xl md:text-3xl' to="/" onClick={() => setIsOpen(false)}>
               Petrouchka<br />
-              Stiner-<br />
-              Grierson
+              Steiner-Grierson
             </Link>
           </Logo>
           <CertificationLogos>
             <CertLogo src={IFMGA} alt="IFMGA Certified" />
-            <CertLogo src={NZMGA} alt="NZMGA Certified" />
+            <CertLogo1 src={NZMGA} alt="NZMGA Certified"  />
           </CertificationLogos>
         </LeftSection>
 
@@ -50,6 +49,9 @@ const Navigation = () => {
           </NavItem>
           <NavItem>
             <Link to="/ski" onClick={() => setIsOpen(false)}>Ski</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/overseas" onClick={() => setIsOpen(false)}>Overseas</Link>
           </NavItem>
           <NavItem>
             <Link to="/locations" onClick={() => setIsOpen(false)}>Locations</Link>
@@ -94,13 +96,16 @@ const Logo = styled.div`
   a {
     color: var(--slate-blue);
     text-decoration: none;
-    font-size: 1.2rem;
+   
     font-weight: 500;
     line-height: 1.2;
     
     &:hover {
       color: var(--alpine-teal);
     }
+       @media (max-width: 990px) {
+    font-size: 1.5rem;
+  }
   }
 `;
 
@@ -109,17 +114,23 @@ const CertificationLogos = styled.div`
   align-items: center;
   gap: 1rem;
   
-  @media (max-width: 930px) {
-    display: none;
-  }
 `;
 
 const CertLogo = styled.img`
-  height: 45px;
+  height: 55px;
   width: auto;
   
   @media (max-width: 1024px) {
-    height: 40px;
+    height: 55px;
+  }
+`;
+
+const CertLogo1 = styled.img`
+  height: 55px;
+  width: auto;
+  
+  @media (max-width: 510px) {
+    display: none;
   }
 `;
 

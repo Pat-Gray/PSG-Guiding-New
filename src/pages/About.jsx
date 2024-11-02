@@ -1,6 +1,14 @@
-import styled from 'styled-components';
+import { lazy, Suspense } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { motion } from 'framer-motion';
-
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import PetEastRidge from '../Images/PetOnEastRidge.webp'
+import GuidePet from '../Images/GuidePet.webp'
+import Pet1 from '../Images/Pet1.webp'
+import NorwayIce from '../Images/PetNorwayIce.webp'
 const About = () => {
   const certifications = [
     { name: "IFMGA/UIAGM Mountain Guide", year: "2018" },
@@ -26,237 +34,132 @@ const About = () => {
     }
   ];
 
+  const carouselImages = [
+    { url: GuidePet, caption: 'Guiding in the Southern Alps' },
+    { url: Pet1, caption: 'Ski guiding up the Tasman Glacier' },
+    { url: NorwayIce, caption: 'Ice Climbing in Norway'},
+  ];
+
+  const sliderSettings = {
+    lazyLoad: 'ondemand',
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    arrows: true,
+  };
+
   return (
-    <AboutWrapper>
-      <HeroSection>
+    <div className="min-h-screen">
+      <div style={{ backgroundImage: `url(${PetEastRidge})` }} 
+           className="h-[70vh] bg-black/40 bg-center bg-cover flex items-center justify-center text-white text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          className="text-5xl font-heading md:text-center"
         >
           About Petrouchka
         </motion.h1>
-      </HeroSection>
+      </div>
 
-      <ContentSection>
-        <StorySection>
-          <SectionTitle>My Story</SectionTitle>
-          <StoryText>
-            Born in New Zealand and raised with a deep connection to the mountains, 
-            I've dedicated my life to exploring and sharing the world's most beautiful 
-            alpine environments. With over a decade of guiding experience across three 
-            continents, I bring technical expertise and local knowledge to every expedition.
-          </StoryText>
-          <StoryText>
-            My journey began in the Southern Alps of New Zealand, where I developed 
-            my skills in alpine climbing and ski touring. This led me to pursue guiding 
-            professionally, eventually achieving IFMGA certification - the highest 
-            level of mountain guiding qualification worldwide.
-          </StoryText>
-          <StoryText>
-            Today, I split my time between New Zealand, Canada, and Norway, leading 
-            climbs, ski tours, and training courses. My passion lies in helping others 
-            discover their potential in the mountains, whether they're complete beginners 
-            or experienced alpinists.
-          </StoryText>
-        </StorySection>
+      <div className="max-w-[1200px] mx-auto px-8 py-16">
+        <div className="flex flex-col md:flex-row gap-8 mb-16">
+          {/* Story Section - Left Side */}
+          <div className="w-full md:w-1/2">
+            <h2 className="text-slate-blue text-4xl mb-8 font-heading">My Story</h2>
+            <p className="text-slate-blue text-lg leading-relaxed mb-6">
+              Born in New Zealand and raised with a deep connection to the mountains, 
+              I've dedicated my life to exploring and sharing the world's most beautiful 
+              alpine environments. With over a decade of guiding experience across three 
+              continents, I bring technical expertise and local knowledge to every expedition.
+            </p>
+            <p className="text-slate-blue text-lg leading-relaxed mb-6">
+              My journey began in the Southern Alps of New Zealand, where I developed 
+              my skills in alpine climbing and ski touring. This led me to pursue guiding 
+              professionally, eventually achieving IFMGA certification - the highest 
+              level of mountain guiding qualification worldwide.
+            </p>
+            <p className="text-slate-blue text-lg leading-relaxed mb-6">
+              Today, I split my time between New Zealand, Canada, and Norway, leading 
+              climbs, ski tours, and training courses. My passion lies in helping others 
+              discover their potential in the mountains, whether they're complete beginners 
+              or experienced alpinists.
+            </p>
+          </div>
 
-        <ValuesSection>
-          <SectionTitle>Guiding Values</SectionTitle>
-          <ValuesGrid>
+          {/* Carousel Section - Right Side */}
+          <div className="w-full md:w-1/2">
+            <div className="rounded-xl shadow-lg h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide>div]:h-full relative">
+              <Suspense fallback={<div className="loading-skeleton h-[400px] md:h-[600px]"></div>}>
+                <Slider {...sliderSettings}>
+                  {carouselImages.map((image, index) => (
+                    <div key={index} className="relative h-full">
+                      <LazyLoadImage 
+                        src={image.url} 
+                        alt={image.caption}
+                        className="w-full h-[400px] md:h-[600px] object-cover rounded-xl"
+                        effect="blur"
+                        placeholderSrc={image.url + '?quality=1'}
+                        threshold={100}
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 rounded-b-xl">
+                        <p className="text-lg text-center">{image.caption}</p>
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </Suspense>
+            </div>
+          </div>
+        </div>
+
+        <section className="mb-16">
+          <h2 className="text-slate-blue text-4xl mb-8 font-heading">Guiding Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <ValueCard
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
+                className="bg-white p-8 rounded-xl shadow-lg text-center"
               >
-                <ValueIcon>
+                <div className="text-4xl text-alpine-teal mb-4">
                   <i className={`fas fa-${value.icon}`}></i>
-                </ValueIcon>
-                <ValueTitle>{value.title}</ValueTitle>
-                <ValueDescription>{value.description}</ValueDescription>
-              </ValueCard>
+                </div>
+                <h3 className="text-slate-blue text-2xl mb-4 font-heading">{value.title}</h3>
+                <p className="text-slate-blue leading-relaxed">{value.description}</p>
+              </motion.div>
             ))}
-          </ValuesGrid>
-        </ValuesSection>
+          </div>
+        </section>
 
-        <CertificationsSection>
-          <SectionTitle>Certifications</SectionTitle>
-          <CertList>
-            {certifications.map((cert, index) => (
-              <CertItem key={index}>
-                <CertName>{cert.name}</CertName>
-                <CertYear>{cert.year}</CertYear>
-              </CertItem>
-            ))}
-          </CertList>
-        </CertificationsSection>
+        
 
-        <CTASection>
-          <CTAContent>
-            <CTATitle>Ready to Start Your Journey?</CTATitle>
-            <CTAText>
+        <section className="bg-slate-blue rounded-xl p-16 text-center text-white">
+          <div className="max-w-[600px] mx-auto">
+            <h2 className="text-4xl mb-4 font-heading">Ready to Start Your Journey?</h2>
+            <p className="text-xl mb-8 opacity-90">
               Let's discuss your mountain objectives and create an experience 
               tailored to your goals.
-            </CTAText>
-            <CTAButton href="/contact">Get in Touch</CTAButton>
-          </CTAContent>
-        </CTASection>
-      </ContentSection>
-    </AboutWrapper>
+            </p>
+            <a 
+              href="/contact" 
+              className="inline-block bg-dawn-orange text-white px-8 py-4 rounded font-medium 
+                transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 };
-
-const AboutWrapper = styled.div`
-  min-height: 100vh;
-`;
-
-const HeroSection = styled.div`
-  height: 60vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('/images/about-hero.jpg') center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--snow-white);
-  text-align: center;
-
-  h1 {
-    font-size: 3.5rem;
-    font-family: var(--font-heading);
-  }
-`;
-
-const ContentSection = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-`;
-
-const SectionTitle = styled.h2`
-  color: var(--slate-blue);
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  font-family: var(--font-heading);
-`;
-
-const StorySection = styled.section`
-  margin-bottom: 4rem;
-`;
-
-const StoryText = styled.p`
-  color: var(--slate-blue);
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-`;
-
-const ValuesSection = styled.section`
-  margin-bottom: 4rem;
-`;
-
-const ValuesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-`;
-
-const ValueCard = styled(motion.div)`
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-  text-align: center;
-`;
-
-const ValueIcon = styled.div`
-  font-size: 2.5rem;
-  color: var(--alpine-teal);
-  margin-bottom: 1rem;
-`;
-
-const ValueTitle = styled.h3`
-  color: var(--slate-blue);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-family: var(--font-heading);
-`;
-
-const ValueDescription = styled.p`
-  color: var(--slate-blue);
-  line-height: 1.6;
-`;
-
-const CertificationsSection = styled.section`
-  margin-bottom: 4rem;
-`;
-
-const CertList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-`;
-
-const CertItem = styled.div`
-  background: var(--glacier-blue);
-  padding: 1.5rem;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const CertName = styled.h4`
-  color: var(--slate-blue);
-  font-size: 1.2rem;
-  font-weight: 600;
-`;
-
-const CertYear = styled.span`
-  color: var(--alpine-teal);
-  font-weight: 500;
-`;
-
-const CTASection = styled.section`
-  background: var(--slate-blue);
-  border-radius: 12px;
-  padding: 4rem;
-  text-align: center;
-  color: var(--snow-white);
-`;
-
-const CTAContent = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
-const CTATitle = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-family: var(--font-heading);
-`;
-
-const CTAText = styled.p`
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-`;
-
-const CTAButton = styled.a`
-  display: inline-block;
-  background: var(--dawn-orange);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-`;
 
 export default About; 

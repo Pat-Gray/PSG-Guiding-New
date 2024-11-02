@@ -1,36 +1,14 @@
-import styled from 'styled-components';
 import Footstool from '../../Images/Footstool.jpg'
+
 const ParallaxSection = () => {
   return (
-    <ParallaxContainer>
-      
-    </ParallaxContainer>
+    <div 
+      className="h-[70vh] bg-fixed bg-center bg-no-repeat bg-cover flex items-center justify-center relative"
+      style={{ backgroundImage: `url(${Footstool})` }}
+    >
+      <div className="absolute inset-0 bg-black/30"></div>
+    </div>
   );
 };
-
-const ParallaxContainer = styled.div`
-  height: 60vh;
-  background-image: url(${Footstool}); /* You'll need to add this image */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-  }
-`;
-
-
 
 export default ParallaxSection; 

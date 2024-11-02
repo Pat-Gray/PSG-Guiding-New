@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Stock from '../Images/Stockimage.jpg'
 const Contact = () => {
-  const whatsappNumber = "+64123456789"; // Replace with actual number
-  const instagramHandle = "petrouchka_guiding"; // Replace with actual handle
-  const emailAddress = "contact@petrouchka.com"; // Replace with actual email
+  const whatsappNumber = "+64 22 561 8308"; // Replace with actual number
+  const instagramHandle = "sheclimbs.skis"; // Replace with actual handle
+  const emailAddress = "Petrouchka@hotmail.com"; // Replace with actual email
 
   return (
     <ContactWrapper>
@@ -85,16 +85,7 @@ const Contact = () => {
             </InstagramButton>
           </SocialButtons>
 
-          <ContactInfo>
-            <InfoItem>
-              <i className="fas fa-map-marker-alt"></i>
-              <div>
-                <strong>Based in</strong>
-                <p>New Zealand</p>
-              </div>
-            </InfoItem>
-            
-          </ContactInfo>
+         
         </ConnectSection>
       </ContactContent>
     </ContactWrapper>
@@ -110,7 +101,7 @@ const ContactWrapper = styled.div`
 const ContactHero = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${Stock}) center/cover;
-  height: 40vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;

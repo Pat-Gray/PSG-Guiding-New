@@ -1,168 +1,108 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Cook from '../../Images/pointingInCookNp.webp'
-import Japan from '../../Images/Japan.webp'
-
+import Japan from '../../Images/Japan.jpg'
+import Rockies from '../../Images/Rockies.jpg'
+import SkiNorway from '../../Images/SkiNorway.webp'
+import WyeCreek from '../../Images/WyeCreek.webp'
+import Lofoten from '../../Images/Lofoten.jpg'
+import PetNorwayIce from '../../Images/PetNorwayIce.webp'
+import Plateau from '../../Images/plateau.webp'
+import Patbabs from '../../Images/Pat-babs.jpg'
 const FeaturedLocations = () => {
   const locations = [
     {
       id: 1,
-      name: 'New Zealand Alps',
+      name: 'New Zealand Southern Alps',
       image: Cook,
       season: 'Nov - Apr',
-      description: 'Technical alpine climbing and ski touring in the Southern Alps',
+      description: 'Technical alpine climbing and ski touring in the Southern Alps.',
     },
     {
       id: 2,
       name: 'Canadian Rockies',
-      image: '/images/canada.jpg',
+      image: Rockies,
       season: 'Dec - Apr',
-      description: 'World-class ice climbing and powder skiing in the Rockies',
+      description: 'World-class ice climbing and powder skiing in the Rockies and British Columbia.',
     },
     {
       id: 3,
       name: 'Norwegian Fjords',
-      image: '/images/norway.jpg',
+      image: SkiNorway,
       season: 'Mar - May',
-      description: 'Ski touring from summit to sea in the land of the midnight sun',
+      description: 'Ski touring from summit to sea in Lofoten and Tromsø.',
     },     {
       id: 4,
-      name: 'Japanese Alps',
+      name: 'Japan Powder Skiing',
       image: Japan,
       season: 'Jan - Mar',
-      description: 'Deep powder skiing and cultural experiences in the heart of Japan',
+      description: 'Deep powder skiing and cultural experiences in the heart of Hokkaido and Honshu.',
     },
     {
       id: 5,
       name: 'Lofoten Islands',
-      image: '/images/lofoten.jpg',
+      image: Lofoten,
       season: 'Jun - Sep',
-      description: 'World-renowned granite climbing above the Arctic Circle',
+      description: 'World-renowned granite climbing above the Arctic Circle under the midnight sun.',
     },
     {
       id: 6,
       name: 'New Zealand Ice',
-      image: '/images/nz-ice.jpg',
+      image: WyeCreek,
       season: 'Jun - Sep',
-      description: 'Technical ice climbing in the pristine Southern Alps',
+      description: 'Ice climbing in the southern Alps.',
+    },
+    {
+      id: 7,
+      name: 'Rock Climbing', 
+      image: Patbabs,
+      season: 'All year',
+      description: 'Rock climbing in New Zealand and overseas.',
+    }, 
+    {
+      id: 8,
+      name: 'Ski Touring',
+      image: Plateau,
+      season: 'All year',
+      description: 'Ski touring in New Zealand and overseas.',
+    }, 
+    {
+      id: 9,
+      name: 'Expedition Trips',
+      image: PetNorwayIce,
+      season: 'All year',
+      description: 'Got a dream trip in mind? Get in touch and we can make it happen.',
     }
   ];
 
+
   return (
-    <LocationsSection>
-      <SectionTitle>Destinations</SectionTitle>
-      <LocationGrid>
+    <section className="py-24 px-8 bg-slate-blue">
+      <h2 className="text-center text-snow-white text-4xl mb-12">Destinations</h2>
+      <p className="text-center text-snow-white text-xl mb-12">New Zealand and overseas</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
         {locations.map(location => (
-          <LocationCard key={location.id}>
-            <LocationImage src={location.image} alt={location.name} />
-            <LocationOverlay>
-              <LocationName>{location.name}</LocationName>
-              <LocationSeason>{location.season}</LocationSeason>
-              <LocationDescription>{location.description}</LocationDescription>
-              <ExploreButton to={`/locations/${location.name.toLowerCase()}`}>
+          <div key={location.id} className="relative h-[500px] rounded-lg overflow-hidden cursor-pointer group">
+            <img 
+              src={location.image} 
+              alt={location.name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 flex flex-col justify-end p-8 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
+              <h3 className="text-snow-white text-2xl mb-2">{location.name}</h3>
+             
+              <p className="text-snow-white mb-6 leading-relaxed">{location.description}</p>
+              <Link 
+                to={`/locations/${location.name.toLowerCase()}`}
+                className="bg-alpine-teal text-snow-white px-6 py-3 rounded inline-block w-fit hover:-translate-y-1 transition-transform duration-200 opacity-100"
+              >
                 Explore
-              </ExploreButton>
-            </LocationOverlay>
-          </LocationCard>
+              </Link>
+            </div>
+          </div>
         ))}
-      </LocationGrid>
-    </LocationsSection>
+      </div>
+    </section>
   );
 };
 
 export default FeaturedLocations;
-const LocationsSection = styled.section`
-  padding: 6rem 2rem;
-  background: var(--glacier-blue);
-`;
-
-const SectionTitle = styled.h2`
-  text-align: center;
-  color: var(--slate-blue);
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-`;
-
-const LocationGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const LocationCard = styled.div`
-  position: relative;
-  height: 500px;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-
-  &:hover {
-    img {
-      transform: scale(1.05);
-    }
-    
-    div {
-      opacity: 1;
-    }
-  }
-`;
-
-const LocationImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-`;
-
-const LocationOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-`;
-
-const LocationName = styled.h3`
-  color: var(--snow-white);
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-`;
-
-const LocationSeason = styled.span`
-  color: var(--dawn-orange);
-  font-size: 1rem;
-  margin-bottom: 1rem;
-`;
-
-const LocationDescription = styled.p`
-  color: var(--snow-white);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-`;
-
-const ExploreButton = styled(Link)`
-  background: var(--alpine-teal);
-  color: var(--snow-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  width: fit-content;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-`; 

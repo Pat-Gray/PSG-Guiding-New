@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
+import RidgeClimbing from "../Images/ridgeClimbing.webp"
+import PetTrogan from "../Images/PetTrogan.webp"
+import PetRidge from '../Images/Pet-on-ridge.webp'
 const Climbing = () => {
   const activities = [
     {
@@ -13,7 +15,10 @@ const Climbing = () => {
           highlights: [
             "Mount Cook / Aoraki",
             "Mount Aspiring",
-            "Darran Mountains"
+            "Darran Mountains",
+            "Mount Tutuko",
+            "3000m peaks",
+            "Instructional courses"
           ],
           description: "Technical alpine climbing in New Zealand's Southern Alps. From moderate snow and ice routes to challenging mixed climbing.",
           image: "/images/nz-alps.jpg"
@@ -22,44 +27,30 @@ const Climbing = () => {
           name: "Canadian Rockies",
           season: "Jun - Sep",
           highlights: [
-            "Mount Robson",
-            "Mount Temple",
-            "Mount Assiniboine"
-          ],
-          description: "Classic mountaineering routes in the heart of the Canadian Rockies. Experience pristine wilderness and stunning peaks.",
-          image: "/images/canadian-rockies.jpg"
-        }
-      ]
-    },
-    {
-      title: "Ice Climbing",
-      locations: [
-        {
-          name: "Canadian Rockies",
-          season: "Dec - Mar",
-          highlights: [
-            "Weeping Wall",
+            "Ice Climbing",
+            "Ice Fields Parkway",
+            "Weeeping wall",
             "Professor Falls",
-            "Stanley Headwall"
+            "Louise Falls"
           ],
-          description: "World-class ice climbing in Banff and Jasper National Parks. From beginner-friendly routes to challenging multi-pitch climbs.",
-          image: "/images/ice-climbing.jpg"
+          description: "Classic ice climbing routes in the heart of the Canadian Rockies. Experience climbing in arguably the best ice climbing destination in the world.",
+          image: "/images/canadian-rockies.jpg"
         },
         {
           name: "New Zealand Winter",
           season: "Jun - Sep",
           highlights: [
             "Wye Creek",
-            "Queens Drive",
-            "Hopkins Valley"
+            "Remarkables",
+            "Mt Cook National Park"
           ],
-          description: "Technical ice and mixed climbing in the Southern Alps. Remote locations and pristine ice formations.",
+          description: "Technical ice and mixed climbing in the Southern Alps.",
           image: "/images/nz-ice.jpg"
         }
       ]
     },
     {
-      title: "Rock Climbing",
+      title: "Norwegian Rock Climbing",
       locations: [
         {
           name: "Lofoten Islands",
@@ -69,18 +60,18 @@ const Climbing = () => {
             "Svolværgeita",
             "Vestpillaren"
           ],
-          description: "World-renowned granite climbing above the Arctic Circle. Multi-pitch routes with stunning ocean views.",
+          description: "World-renowned granite climbing above the Arctic Circle. Multi-pitch routes with stunning ocean views under the midnight sun.",
           image: "/images/lofoten.jpg"
         },
         {
-          name: "New Zealand Crags",
+          name: "New Zealand Climbing",
           season: "Year-round",
           highlights: [
-            "Wanaka Crags",
-            "Castle Hill",
-            "Charleston"
+            "Technical rope course",
+            "Sport climbing",
+            "Trad climbing",
           ],
-          description: "Sport and trad climbing across New Zealand. From limestone to granite, there's something for everyone.",
+          description: "Sport and trad climbing across New Zealand. From single pitch to multi-pitch, there's something for everyone.",
           image: "/images/nz-rock.jpg"
         }
       ]
@@ -91,31 +82,34 @@ const Climbing = () => {
     {
       title: "Tailored Alpine Adventures",
       description: "Let us craft a unique alpine experience that builds on your past climbs and pushes your boundaries. Whether you're looking to conquer new peaks or refine your skills, we'll design a journey that matches your aspirations.",
-      image: "/images/alpine-adventure.jpg",
+      image: RidgeClimbing,
       highlights: [
-        "Custom route selection",
+        "Trip selections based on experience",
         "Skill enhancement",
-        "Personalized coaching"
+        "Personalized coaching", 
       ]
     },
     {
-      title: "Bespoke Rock Climbing Escapades",
+      title: "Bespoke Rock Climbing Trips",
       description: "Experience the thrill of rock climbing with a personalized itinerary. From single-pitch sport climbs to multi-pitch trad adventures, we'll tailor the perfect climbing trip based on your previous experiences and future goals.",
-      image: "/images/rock-escapade.jpg",
+      image: PetTrogan,
       highlights: [
         "Handpicked routes",
         "Technique improvement",
-        "Goal-oriented climbing"
-      ]
+        "Goal-oriented climbing", 
+        "Skill enhancement", 
+        "Personalized coaching", 
+        "Overseas trips"
+            ]
     },
     {
-      title: "Exclusive Ice Climbing Experiences",
-      description: "Dive into the world of ice climbing with a bespoke experience. We'll select the best ice routes for your skill level and ambitions, ensuring a safe and exhilarating adventure.",
+      title: "Personalised Overseas Climbing Trips",
+      description: "Get in touch if you have a dream climbing trip in mind.  Let's make it happen.",
       image: "/images/ice-experience.jpg",
       highlights: [
-        "Tailored ice routes",
-        "Safety-focused",
-        "Skill progression"
+        "Build on previous experience",
+        "Customised trips",
+        "Dream Trips"
       ]
     }
   ];
@@ -142,22 +136,7 @@ const Climbing = () => {
       </HeroSection>
 
       <PersonalizedSection>
-        <PersonalizedHeader>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Personalized Climbing Journeys
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Tailored experiences for climbers of all levels
-          </motion.p>
-        </PersonalizedHeader>
+        
 
         <PersonalizedContent>
           {personalizedJourneys.map((journey, index) => (
@@ -241,7 +220,7 @@ const ClimbingWrapper = styled.div`
 const HeroSection = styled.div`
   height: 70vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/climbing-hero.jpg') center/cover;
+    url(${PetRidge}) center/cover;
   display: flex;
   align-items: center;
   justify-content: center;

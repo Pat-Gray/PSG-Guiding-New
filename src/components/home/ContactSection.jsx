@@ -40,7 +40,7 @@ const SectionTitle = styled.h2`
 `;
 
 const ContactText = styled.p`
-  color: var(--glacier-blue);
+ 
   font-size: 1.1rem;
   margin-bottom: 2rem;
 `;
@@ -65,6 +65,8 @@ const Input = styled.input`
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--snow-white);
+  padding: 1rem;
+  border-radius: 4px;
   
   &:focus {
     border-color: var(--alpine-teal);
@@ -76,6 +78,8 @@ const TextArea = styled.textarea`
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--snow-white);
+  padding: 1rem;
+  border-radius: 4px;
   
   &:focus {
     border-color: var(--alpine-teal);

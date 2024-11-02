@@ -7,7 +7,7 @@ import Skiing from './pages/Skiing';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import LocationsMap from './pages/Locations';
-
+import Overseas from './pages/Overseas';
 const App = () => {
   return (
     <Router>
@@ -17,6 +17,7 @@ const App = () => {
           <Route path="about" element={<About />} />
           <Route path="climb" element={<Climbing />} />
           <Route path="ski" element={<Skiing />} />
+          <Route path="overseas" element={<Overseas />} />    
           <Route path="locations" element={<LocationsMap />} />
           <Route path="contact" element={<Contact />} />
           <Route path="faq" element={<FAQ />} />

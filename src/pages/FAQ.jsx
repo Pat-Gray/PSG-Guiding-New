@@ -93,21 +93,28 @@ const FAQWrapper = styled.div`
 `;
 
 const FAQHero = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url(${BgImage}) center/cover;
+    
   padding: 6rem 2rem;
   text-align: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--snow-white);
 
   h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     font-family: var(--font-heading);
+    font-weight: 700;
   }
 
   p {
     font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: 1;
   }
 `;
 
@@ -164,7 +171,7 @@ const QuestionHeader = styled.button`
 const QuestionText = styled.span`
   font-size: 1.1rem;
   color: var(--slate-blue);
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
 `;
 
@@ -184,35 +191,35 @@ const AnswerText = styled.div`
 const StillHaveQuestions = styled.div`
   text-align: center;
   padding: 4rem 2rem;
-  background: var(--glacier-blue);
+  background: var(--slate-blue);
 
   h2 {
-    color: var(--slate-blue);
+    color: white;
     font-size: 2rem;
     margin-bottom: 1rem;
     font-family: var(--font-heading);
   }
 
   p {
-    color: var(--slate-blue);
+    color: white;
     margin-bottom: 2rem;
   }
 `;
 
 const ContactButton = styled.a`
   display: inline-block;
-  background: var(--alpine-teal);
+  background: var(--dawn-orange);
   color: white;
   padding: 1rem 2rem;
   border-radius: 4px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.2s ease;
 
   &:hover {
-    background: var(--sage-green);
+    background: var(--alpine-teal);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 153, 155, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 `;
 

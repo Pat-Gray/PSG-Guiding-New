@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <FooterWrapper>
-      <FooterContent>
-        <FooterSection>
+      <FooterContent className='flex flex-col text-center items-center justify-center'>
+        <FooterSection >
           <FooterTitle>Contact</FooterTitle>
           <ContactInfo>
             <ContactItem>
               <i className="far fa-envelope"></i>
-              contact@petrouchka.com
+              Petrouchka@hotmail.com
             </ContactItem>
             <ContactItem>
               <i className="fab fa-whatsapp"></i>
-              +64 123 456 789
+              +64 22 561 8308
             </ContactItem>
           </ContactInfo>
         </FooterSection>
@@ -23,22 +23,29 @@ const Footer = () => {
           <FooterTitle>Quick Links</FooterTitle>
           <FooterLinks>
             <FooterLink to="/about">About</FooterLink>
-            <FooterLink to="/contact">Contact</FooterLink>
+            <FooterLink to="/climb">Climb</FooterLink>
+            <FooterLink to="/ski">Skiing</FooterLink>
+            <FooterLink to="/overseas">Overseas</FooterLink>
+            <FooterLink to="/locations">Locations</FooterLink>
             <FooterLink to="/faq">FAQ</FooterLink>
+            <FooterLink to="/contact">Contact</FooterLink>
           </FooterLinks>
         </FooterSection>
 
         <FooterSection>
-          <FooterTitle>Connect</FooterTitle>
-          <SocialLinks>
-            <SocialLink href="https://instagram.com" target="_blank">
-              <i className="fab fa-instagram"></i>
-            </SocialLink>
-            <SocialLink href="https://facebook.com" target="_blank">
-              <i className="fab fa-facebook"></i>
-            </SocialLink>
-          </SocialLinks>
+          
+          <CertificationLogos>
+            <CertLogo 
+              src="../../../public/Logo/IFMGA.png" 
+              alt="IFMGA Certified Mountain Guide" 
+            />
+            <CertLogo 
+              src="../../../public/Logo/NZMGA.png" 
+              alt="NZGA Mountain Guide" 
+            />
+          </CertificationLogos>
         </FooterSection>
+
       </FooterContent>
       
       <FooterBottom>
@@ -62,9 +69,14 @@ const FooterContent = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 3rem;
+  text-align: center;
 `;
 
-const FooterSection = styled.div``;
+const FooterSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const FooterTitle = styled.h3`
   color: var(--alpine-teal);
@@ -76,6 +88,8 @@ const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  align-items: center;
 `;
 
 const ContactItem = styled.div`
@@ -83,16 +97,22 @@ const ContactItem = styled.div`
   align-items: center;
   gap: 0.5rem;
   opacity: 0.8;
+  justify-content: center;
   
   i {
     color: var(--alpine-teal);
+    width: 20px;
+    text-align: center;
   }
 `;
 
 const FooterLinks = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2rem;
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
 `;
 
 const FooterLink = styled(Link)`
@@ -100,7 +120,7 @@ const FooterLink = styled(Link)`
   text-decoration: none;
   opacity: 0.8;
   transition: all 0.2s ease;
-  
+  text-align: center;
   &:hover {
     opacity: 1;
     color: var(--alpine-teal);
@@ -135,6 +155,19 @@ const Copyright = styled.p`
   text-align: center;
   opacity: 0.6;
   font-size: 0.9rem;
+`;
+
+const CertificationLogos = styled.div`
+  display: flex;
+
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+`;
+
+const CertLogo = styled.img`
+  height: 100px;
 `;
 
 export default Footer; 

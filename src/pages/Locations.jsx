@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import  { useState, Suspense } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
