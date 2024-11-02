@@ -7,7 +7,7 @@ import WyeCreek from '../../Images/WyeCreek.webp'
 import Lofoten from '../../Images/Lofoten.jpg'
 import PetNorwayIce from '../../Images/PetNorwayIce.webp'
 import Plateau from '../../Images/plateau.webp'
-import Patbabs from '../../Images/Pat-babs.jpg'
+import Patbabs from '../../Images/pat-babs.jpg'
 const FeaturedLocations = () => {
   const locations = [
     {
