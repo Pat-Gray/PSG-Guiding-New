@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import IFMGA from '../../../public/Logo/IFMGA.png'
+import NZMGA from '../../../public/Logo/NZMGA.png'
 
 const Footer = () => {
   return (
@@ -36,11 +38,11 @@ const Footer = () => {
           
           <CertificationLogos>
             <CertLogo 
-              src="../../../public/Logo/IFMGA.png" 
+              src={IFMGA} 
               alt="IFMGA Certified Mountain Guide" 
             />
             <CertLogo 
-              src="../../../public/Logo/NZMGA.png" 
+              src={NZMGA} 
               alt="NZGA Mountain Guide" 
             />
           </CertificationLogos>
