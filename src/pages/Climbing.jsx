@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import RidgeClimbing from "../Images/ridgeClimbing.webp"
 import PetTrogan from "../Images/PetTrogan.webp"
 import PetRidge from '../Images/Pet-on-ridge.webp'
+import { useState, useEffect } from 'react';
+
 const Climbing = () => {
   const activities = [
     {

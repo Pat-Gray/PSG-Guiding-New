@@ -10,11 +10,14 @@ import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import LocationsMap from './pages/Locations';
 import Overseas from './pages/Overseas';
+import ScrollToTop from './components/ScrollToTop';
+
 const App = () => {
   return (
     <div>
       <SpeedInsights />
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

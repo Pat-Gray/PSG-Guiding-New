@@ -1,8 +1,34 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import BgImage from '../Images/WestCoast.jpg'
+
+// Use optimized images
+const HeroBackground = '/images/WestCoast-1200.webp';  // Main image
+const HeroBackgroundTiny = '/images/WestCoast-placeholder.webp';  // Blur placeholder
+
 const FAQ = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Preload hero image
+  useEffect(() => {
+    const image = new Image();
+    image.src = HeroBackground;
+    image.onload = () => setIsLoaded(true);
+
+    // Add preload link
+    const preloadLink = document.createElement('link');
+    preloadLink.rel = 'preload';
+    preloadLink.as = 'image';
+    preloadLink.href = HeroBackground;
+    document.head.appendChild(preloadLink);
+
+    return () => {
+      if (document.head.contains(preloadLink)) {
+        document.head.removeChild(preloadLink);
+      }
+    };
+  }, []);
+
   const faqs = [
     {
       category: "Getting Started",
@@ -37,7 +63,7 @@ const FAQ = () => {
 
   return (
     <FAQWrapper>
-      <FAQHero>
+      <FAQHero isLoaded={isLoaded}>
         <h1>Frequently Asked Questions</h1>
         <p>Find answers to common questions about mountain guiding and adventures</p>
       </FAQHero>
@@ -94,7 +120,7 @@ const FAQWrapper = styled.div`
 
 const FAQHero = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(${BgImage}) center/cover;
+    url(${HeroBackground}) center/cover;
     
   padding: 6rem 2rem;
   text-align: center;
