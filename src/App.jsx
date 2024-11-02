@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,6 +12,8 @@ import LocationsMap from './pages/Locations';
 import Overseas from './pages/Overseas';
 const App = () => {
   return (
+    <div>
+      <SpeedInsights />
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -25,6 +29,7 @@ const App = () => {
         </Route>
       </Routes>
     </Router>
+    </div>
   );
 };
 
