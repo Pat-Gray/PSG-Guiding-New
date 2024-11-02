@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import PetEastRidge from '../Images/PetOnEastRidge.webp'
+import PetEastRidge from '../Images/petOnEastRidge.webp'
 import GuidePet from '../Images/GuidePet.webp'
 import Pet1 from '../Images/Pet1.webp'
 import NorwayIce from '../Images/PetNorwayIce.webp'
