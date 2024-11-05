@@ -1,6 +1,6 @@
 // Using optimized images from public directory
-const Cook = '/images/pointingInCookNp-800.webp';
-const Japan = '/images/Japan-800.webp';
+const Cook = '/images/MountainsNZ.jpg';
+const Japan = '/images/JapanSkiing.jpg';
 const Rockies = '/images/Rockies-800.webp';
 const SkiNorway = '/images/SkiNorway-800.webp';
 const WyeCreek = '/images/WyeCreek-800.webp';
@@ -11,14 +11,14 @@ const Patbabs = '/images/pat-babs-800.webp';
 
 // Add placeholders for blur effect
 const placeholders = {
-  Cook: '/images/pointingInCookNp-placeholder.webp',
-  Japan: '/images/Japan-placeholder.webp',
-  Rockies: '/images/Rockies-placeholder.webp',
-  SkiNorway: '/images/SkiNorway-placeholder.webp',
-  WyeCreek: '/images/WyeCreek-placeholder.webp',
-  Lofoten: '/images/Lofoten-placeholder.webp',
-  PetNorwayIce: '/images/PetNorwayIce-placeholder.webp',
-  Plateau: '/images/plateau-placeholder.webp',
+  Cook: '/images/MountainsNZ.jpg',
+  Japan: '/images/JapanSkiing.jpg',
+  Rockies: '/images/Rockies-800.webp',
+  SkiNorway: '/images/SkiNorway-800.webp',
+  WyeCreek: '/images/WyeCreek-800.webp',
+  Lofoten: '/images/Lofoten-800.webp',
+  PetNorwayIce: '/images/PetNorwayIce-800.webp',
+  Plateau: '/images/plateau-800.webp',
   Patbabs: '/images/pat-babs-placeholder.webp'
 };
 

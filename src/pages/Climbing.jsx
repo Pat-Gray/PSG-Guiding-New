@@ -6,7 +6,7 @@ import PetTrogan from "../Images/PetTrogan.webp"
 import PetRidge from '../Images/Pet-on-ridge.webp'
 import { useState, useEffect } from 'react';
 import ServiceBadges from '../components/common/ServiceBadges';
-import Gruber from '../images/Gruber.jpg'
+import SkiMountaineering from '../images/SkiMountaineering.jpg'
 import Malte from '../images/patMalteBrun.webp'
 import PatNazomi from '../images/pat-nazomi.webp'
 import Instruction from '../images/Instruction.jpg'
@@ -14,7 +14,7 @@ import RockClimbing from '../images/RockClimbing.jpg'
 import Gallery from '../components/Gallery';
 
 const images = [
-  Gruber,
+  SkiMountaineering,
   Malte,
   PatNazomi,
   Instruction,
@@ -109,7 +109,7 @@ const Climbing = () => {
     {
       title: "Personalised Overseas Climbing Trips",
       description: "Get in touch if you have a dream climbing trip in mind.  Let's make it happen.",
-      image: Gruber,
+      image: SkiMountaineering,
       highlights: [
         "Build on previous experience",
         "Customised trips",
