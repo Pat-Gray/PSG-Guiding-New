@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import RidgeClimbing from "../Images/ridgeClimbing.webp"
 import PetTrogan from "../Images/PetTrogan.webp"
 import PetRidge from '../Images/Pet-on-ridge.webp'
-import { useState, useEffect } from 'react';
+
 import ServiceBadges from '../components/common/ServiceBadges';
-import SkiMountaineering from '../images/SkiMountaineering.jpg'
+import SkiMountaineering from '../images/SkiMountaineeringImage.jpg'
 import Malte from '../images/patMalteBrun.webp'
 import PatNazomi from '../images/pat-nazomi.webp'
 import Instruction from '../images/Instruction.jpg'
