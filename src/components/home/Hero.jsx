@@ -1,22 +1,41 @@
 import { useState, useEffect } from 'react';
 import HeroBackground from '../../Images/Stetind.webp';
 import HeroBackgroundTiny from '../../Images/Stetind.webp';
+import MobileBackground from '../../../public/images/ConnieImage-1200.webp';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Image preloading
   useEffect(() => {
     const image = new Image();
-    image.src = HeroBackground;
+    image.src = isMobile ? MobileBackground : HeroBackground;
     image.fetchPriority = 'high';
     image.onload = () => setIsLoaded(true);
 
     const preloadLink = document.createElement('link');
     preloadLink.rel = 'preload';
     preloadLink.as = 'image';
-    preloadLink.href = HeroBackground;
+    preloadLink.href = isMobile ? MobileBackground : HeroBackground;
     document.head.appendChild(preloadLink);
-  }, []);
+
+    return () => {
+      if (preloadLink.parentNode) {
+        preloadLink.parentNode.removeChild(preloadLink);
+      }
+    };
+  }, [isMobile]);
 
   return (
     <div className="relative h-screen">
@@ -33,7 +52,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
         style={{ 
-          backgroundImage: `linear-gradient(rgba(42, 51, 66, 0.3), rgba(42, 51, 66, 0.5)), url(${HeroBackground})`,
+          backgroundImage: `linear-gradient(rgba(42, 51, 66, 0.3), rgba(42, 51, 66, 0.5)), url(${isMobile ? MobileBackground : HeroBackground})`,
           opacity: isLoaded ? 1 : 0,
           willChange: 'opacity'
         }}

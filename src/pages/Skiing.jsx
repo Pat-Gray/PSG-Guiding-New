@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import ServiceBadges from '../components/common/ServiceBadges';
 import Gallery from '../components/Gallery'
+
 
 
 
@@ -144,12 +144,6 @@ const Skiing = () => {
                         </div>
                       ))}
                     </div>
-                    <Link 
-                      to={`/skiing/${activity.title.toLowerCase()}/${location.name.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="inline-block bg-alpine-teal text-white px-6 py-3 rounded hover:bg-sage-green transition-all duration-200 hover:-translate-y-0.5"
-                    >
-                      Explore Routes
-                    </Link>
                   </div>
                 </div>
               ))}

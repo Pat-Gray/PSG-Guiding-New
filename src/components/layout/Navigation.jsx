@@ -142,7 +142,7 @@ const NavLinks = styled.ul`
   margin: 0;
   padding: 0;
   
-  @media (max-width: 930px) {
+  @media (max-width: 1100px) {
     display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
     flex-direction: column;
     position: absolute;
@@ -157,13 +157,49 @@ const NavLinks = styled.ul`
 `;
 
 const NavItem = styled.li`
-  @media (max-width: 930px) {
+  a {
+    color: var(--slate-blue);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--alpine-teal);
+      transition: width 0.3s ease;
+    }
+    
+    &:hover {
+      color: var(--alpine-teal);
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 1100px) {
     width: 100%;
     text-align: center;
     
     a {
       display: block;
       padding: 0.75rem;
+      
+      &::after {
+        display: none; // Remove underline effect on mobile
+      }
+      
+      &:hover {
+        background-color: var(--alpine-teal);
+        color: white;
+        border-radius: 4px;
+      }
     }
   }
 `;
@@ -173,15 +209,22 @@ const ContactButton = styled(Link)`
   color: white !important;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   
   &:hover {
     background: var(--alpine-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
-  @media (max-width: 930px) {
+  @media (max-width: 1100px) { // Updated from 930px to 1100px
     width: 100%;
     display: block;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 `;
 
@@ -197,7 +240,7 @@ const HamburgerButton = styled.button`
   padding: 0;
   z-index: 1100;
 
-  @media (max-width: 930px) {
+  @media (max-width: 1100px) {
     display: flex;
   }
 

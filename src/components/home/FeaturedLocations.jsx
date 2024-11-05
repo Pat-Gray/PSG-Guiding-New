@@ -1,34 +1,26 @@
 // eslint-disable-next-line react/prop-types
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import {locations} from '../../utils/locations';
+import { locations } from '../../utils/locations';
 
 const OptimizedLocationCard = ({ location }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   
   return (
-    <div className="relative h-[500px] rounded-lg overflow-hidden">
-      <LazyLoadImage
+    <div className="relative h-[500px] rounded-lg overflow-hidden group">
+      <img
         src={location.image}
         alt={location.name}
-        // width={800}
-        // height={500}
-        effect="blur"
-        threshold={100}
-        loading="lazy"
+        className={`
+          w-full h-full object-cover transition-transform duration-300 group-hover:scale-105
+          ${isLoaded ? 'opacity-100' : 'opacity-0'}
+        `}
         onLoad={() => setIsLoaded(true)}
-        className="w-full h-full object-cover"
-        placeholderSrc={location.placeholder}
       />
 
-      {/* Gradient overlay */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 flex flex-col justify-end p-8 
-                   opacity-80 transition-opacity duration-300 group-hover:opacity-100"
-      >
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 flex flex-col justify-end p-8 
+                   opacity-80 transition-opacity duration-300 group-hover:opacity-100">
         <h3 className="text-snow-white text-2xl mb-2 font-medium">
           {location.name}
         </h3>
@@ -51,15 +43,6 @@ const OptimizedLocationCard = ({ location }) => {
 };
 
 const FeaturedLocations = () => {
-  // Preload the first few images
-  useEffect(() => {
-    const preloadCount = 3;
-    locations.slice(0, preloadCount).forEach(location => {
-      const img = new Image();
-      img.src = location.image;
-    });
-  }, []);
-
   return (
     <section className="py-24 px-8 bg-slate-blue">
       <h2 className="text-center text-snow-white text-4xl mb-12">

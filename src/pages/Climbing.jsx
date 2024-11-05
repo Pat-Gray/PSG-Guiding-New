@@ -148,9 +148,7 @@ const Climbing = () => {
                     </HighlightItem>
                   ))}
                 </HighlightsList>
-                <ExploreButton to={`/climbing/${journey.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                  Learn More
-                </ExploreButton>
+               
               </JourneyContent>
             </PersonalizedJourney>
           ))}
@@ -183,9 +181,6 @@ const Climbing = () => {
                         </HighlightItem>
                       ))}
                     </HighlightsList>
-                    <ExploreButton to={`/climbing/${activity.title.toLowerCase()}/${location.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                      Explore Routes
-                    </ExploreButton>
                   </LocationContent>
                 </LocationCard>
               ))}
