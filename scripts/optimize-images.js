@@ -13,33 +13,42 @@ async function optimizeImages() {
   }
 
   const files = fs.readdirSync(inputDir);
+  const sizes = [320, 640, 768, 1024, 1200, 1920];
 
   for (const file of files) {
     if (file.match(/\.(jpg|jpeg|png|webp)$/i)) {
       const image = sharp(path.join(inputDir, file));
       const metadata = await image.metadata();
 
-      // Create WebP versions
-      await image
-        .resize({
-          width: 1200,
-          withoutEnlargement: true,
-          fit: 'cover'
-        })
-        .webp({ quality: 90 })
-        .toFile(path.join(outputDir, `${path.parse(file).name}-1200.webp`));
+      // Generate responsive images
+      for (const size of sizes) {
+        if (size <= metadata.width) {
+          await image
+            .resize({
+              width: size,
+              withoutEnlargement: true,
+              fit: 'cover'
+            })
+            .webp({ quality: size < 768 ? 75 : 85 })
+            .toFile(path.join(outputDir, `${path.parse(file).name}-${size}.webp`));
+        }
+      }
 
-      // Create smaller versions
-      await image
-        .resize({
-          width: 800,
-          withoutEnlargement: true,
-          fit: 'cover'
-        })
-        .webp({ quality: 75 })
-        .toFile(path.join(outputDir, `${path.parse(file).name}-800.webp`));
+      // Create AVIF versions for modern browsers
+      for (const size of sizes) {
+        if (size <= metadata.width) {
+          await image
+            .resize({
+              width: size,
+              withoutEnlargement: true,
+              fit: 'cover'
+            })
+            .avif({ quality: size < 768 ? 75 : 85 })
+            .toFile(path.join(outputDir, `${path.parse(file).name}-${size}.avif`));
+        }
+      }
 
-      // Create placeholder versions
+      // Create placeholder
       await image
         .resize({
           width: 20,

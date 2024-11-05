@@ -7,7 +7,6 @@ const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -17,17 +16,12 @@ const Hero = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Image preloading
   useEffect(() => {
-    const image = new Image();
-    image.src = isMobile ? MobileBackground : HeroBackground;
-    image.fetchPriority = 'high';
-    image.onload = () => setIsLoaded(true);
-
     const preloadLink = document.createElement('link');
     preloadLink.rel = 'preload';
     preloadLink.as = 'image';
     preloadLink.href = isMobile ? MobileBackground : HeroBackground;
+    preloadLink.type = 'image/webp';
     document.head.appendChild(preloadLink);
 
     return () => {
@@ -39,6 +33,7 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen">
+      {/* Blur loading placeholder */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
         style={{ 
@@ -49,15 +44,31 @@ const Hero = () => {
         }}
       />
       
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
-        style={{ 
-          backgroundImage: `linear-gradient(rgba(42, 51, 66, 0.3), rgba(42, 51, 66, 0.5)), url(${isMobile ? MobileBackground : HeroBackground})`,
-          opacity: isLoaded ? 1 : 0,
-          willChange: 'opacity'
-        }}
-      />
+      {/* Main hero image */}
+      <picture className="absolute inset-0">
+        <source
+          srcSet={isMobile ? MobileBackground : HeroBackground}
+          type="image/webp"
+        />
+        <img
+          src={isMobile ? MobileBackground : HeroBackground}
+          alt="Hero background"
+          className="w-full h-full object-cover transition-opacity duration-500"
+          style={{ 
+            opacity: isLoaded ? 1 : 0,
+            willChange: 'opacity'
+          }}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          onLoad={() => setIsLoaded(true)}
+        />
+      </picture>
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
+      {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center text-snow-white max-w-[800px] px-8">
           <h1 
