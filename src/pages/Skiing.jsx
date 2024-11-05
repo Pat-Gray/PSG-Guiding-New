@@ -3,24 +3,15 @@ import { Link } from 'react-router-dom';
 import ServiceBadges from '../components/common/ServiceBadges';
 import Gallery from '../components/Gallery'
 
-import SkiHero from '../Images/SkiHero.jpg'
-import ConnieImg from '../images/ConnieImage.jpg';
-import patNorway from '../images/patNorway.jpg'
-import Plateau from '../images/plateau.webp'
-import Japan1 from '../images/Japan1.jpg'
-import Sunrise from '../images/Sunrise.jpg'
-import SkiBelay from '../images/SkiBelay.jpg'
-import TransitionJapan from '../images/TransitionJapan.webp'
-import PetSkiing from '../images/petskiing.webp'
+
 
 const Skiing = () => {
+
   const skiingImages = [
-    
-    PetSkiing,
-    
-    Sunrise,
-    SkiBelay,
-    TransitionJapan,
+    '/images/petskiing-1200.webp',
+    '/images/Sunrise-1200.webp',
+    '/images/SkiBelay-1200.webp',
+    '/images/TransitionJapan-1200.webp',
   ]
 
   const skiingActivities = [
@@ -36,7 +27,7 @@ const Skiing = () => {
             "Remarkables Range"
           ],
           description: "Explore the amazing terrain of New Zealand's Southern Alps. Perfect for those seeking adventure or those seeking to gain experience and knowledge of the backcountry.",
-          image: Plateau
+          image: '/images/plateau-1200.webp'
         },
         {
           name: "Avalanche Courses",
@@ -56,7 +47,7 @@ const Skiing = () => {
             
           ],
           description: "Ski-Mountaineering for those with high ski ability and want to experience New Zealand's best ski descents",
-          image: ConnieImg
+          image: '/images/SkiMountaineeringImage-1200.webp'
         }
       ]
     },
@@ -72,7 +63,7 @@ const Skiing = () => {
         
           ],
           description: "Ski from summit to sea in the stunning Norwegian fjords. A once in a lifetime experience combining northern lights, amazing ski terrain and breathtaking views.",
-          image: patNorway
+          image: '/images/SkiNorway-1200.webp'
         },
         {
           name: "Japan Powder Skiing",
@@ -83,7 +74,7 @@ const Skiing = () => {
             "Honshu"
           ],
           description: "Experience the best powder skiing in the world in the mountains of Japan with unquie culture, food and onsens.",
-          image: Japan1
+          image: '/images/Japan1-1200.webp'
         }
       ]
     }
@@ -92,7 +83,10 @@ const Skiing = () => {
 
   return (
     <div className="min-h-screen">
-      <div style={{ backgroundImage: `url(${SkiHero})` }} className="relative h-[70vh] bg-[url('../../public/images/SkiHero.jpg')] bg-center bg-cover flex items-center justify-center text-snow-white">
+      <div 
+        style={{ backgroundImage: "url('/images/SkiHero-1200.webp')" }}
+        className="relative h-[70vh] bg-center bg-cover flex items-center justify-center text-snow-white"
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div className="relative text-center max-w-[800px] px-8">
           <motion.h1

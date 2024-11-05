@@ -6,6 +6,8 @@ const inputDir = 'src/Images';
 const outputDir = 'public/images';
 
 async function optimizeImages() {
+  console.log('Starting image optimization...');
+
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -48,6 +50,8 @@ async function optimizeImages() {
         .toFile(path.join(outputDir, `${path.parse(file).name}-placeholder.webp`));
     }
   }
+
+  console.log(`Optimized ${files.length} images`);
 }
 
 optimizeImages().catch(console.error); 
