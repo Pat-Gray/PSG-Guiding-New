@@ -1,3 +1,5 @@
+// eslint-disable-next-line react/prop-types
+
 import { useOptimizedImage } from '../utils/imageOptimization';
 
 const Gallery = ({ images }) => {

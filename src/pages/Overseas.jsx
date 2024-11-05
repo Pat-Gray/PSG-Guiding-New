@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
-import SkiShot from '../images/SkiShot.jpg'
+
 
 const Overseas = () => {
   const destinations = [
@@ -16,7 +15,7 @@ const Overseas = () => {
               description: "Unique ski touring from summit to sea.",
               season: "February - April",
               difficulty: "Intermediate to Advanced",
-              image: "/images/lofoten-skiing.jpg"
+              image: "/images/ridgeClimbing-1200.webp"
             }
           ]
         },
@@ -28,7 +27,7 @@ const Overseas = () => {
               description: "World-class granite climbing in the midnight sun.",
               season: "June - September",
               difficulty: "All levels",
-              image: "/images/lofoten-climbing.jpg"
+              image: "/images/ridgeClimbing-1200.webp"
             }
           ]
         }
@@ -45,7 +44,7 @@ const Overseas = () => {
               description: "Legendary backcountry skiing in the heart of the Selkirks.",
               season: "December - April",
               difficulty: "Advanced",
-              image: "/images/rogers-pass.jpg"
+              image: "/images/ridgeClimbing-1200.webp"
             }
           ]
         },
@@ -57,7 +56,7 @@ const Overseas = () => {
               description: "Classic alpine routes on limestone peaks.",
               season: "June - September",
               difficulty: "Intermediate to Advanced",
-              image: "/images/canadian-rockies.jpg"
+              image: "/images/ridgeClimbing-1200.webp"
             }
           ]
         }
@@ -66,8 +65,12 @@ const Overseas = () => {
   ];
 
   return (
-    <PageWrapper>
-      <div style={{ backgroundImage: `url(${SkiShot})` }} className="relative h-[80vh] bg-[url('../../public/images/SkiHero.jpg')] bg-center bg-cover flex items-center justify-center text-snow-white">
+    <div className="min-h-screen">
+      
+      <div 
+        style={{ backgroundImage: "url('/images/SkiShot-1200.webp')" }}
+        className="relative h-[80vh] bg-center bg-cover flex items-center justify-center text-snow-white"
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div className="relative text-center max-w-[800px] px-8">
           <motion.h1
@@ -89,177 +92,48 @@ const Overseas = () => {
         </div>
       </div>
 
-
-      <ContentWrapper>
+      <div className="max-w-[1200px] mx-auto px-8 py-16">
         {destinations.map((destination, index) => (
-          <CountrySection key={index}>
-            <CountryTitle>{destination.country}</CountryTitle>
+          <section key={index} className="mb-16">
+            <h2 className="text-4xl text-slate-blue mb-8 font-heading">{destination.country}</h2>
             
             {destination.activities.map((activity, actIndex) => (
-              <ActivitySection key={actIndex}>
-                <ActivityTitle>{activity.type}</ActivityTitle>
-                <LocationGrid>
+              <div key={actIndex} className="mb-12">
+                <h3 className="text-2xl text-alpine-teal mb-6 font-heading">{activity.type}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {activity.locations.map((location, locIndex) => (
-                    <LocationCard key={locIndex}>
-                      <LocationImage src={location.image} alt={location.name} />
-                      <LocationContent>
-                        <LocationName>{location.name}</LocationName>
-                        <LocationSeason>{location.season}</LocationSeason>
-                        <LocationDescription>{location.description}</LocationDescription>
-                        <LocationDifficulty>
+                    <div key={locIndex} className="bg-white rounded-xl overflow-hidden shadow-md">
+                      <img
+                        src={location.image}
+                        alt={location.name}
+                        
+                        className="w-full h-40 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="text-lg text-slate-blue mb-2 font-heading">{location.name}</h4>
+                        <p className="text-gray-600 mb-2">{location.description}</p>
+                        <p className="text-gray-500 mb-2">{location.season}</p>
+                        <div className="flex items-center">
                           <i className="fas fa-mountain mr-2"></i>
-                          {location.difficulty}
-                        </LocationDifficulty>
-                      </LocationContent>
-                    </LocationCard>
+                          <span className="text-gray-500">{location.difficulty}</span>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </LocationGrid>
-              </ActivitySection>
+                </div>
+              </div>
             ))}
-          </CountrySection>
+          </section>
         ))}
 
-        <ContactSection>
-          <h2>Plan Your International Adventure</h2>
-          <p>Ready to explore these world-class destinations? Get in touch to start planning your trip.</p>
-          <ContactButton href="/contact">Contact Us</ContactButton>
-        </ContactSection>
-      </ContentWrapper>
-    </PageWrapper>
+        <div className="text-center bg-slate-blue text-white p-8 rounded-xl">
+          <h2 className="text-2xl mb-4 font-heading">Plan Your International Adventure</h2>
+          <p className="mb-6 text-lg">Ready to explore these world-class destinations? Get in touch to start planning your trip.</p>
+          <a href="/contact" className="bg-dawn-orange text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300 hover:bg-alpine-teal">Contact Us</a>
+        </div>
+      </div>
+    </div>
   );
 };
-
-const PageWrapper = styled.div`
-  min-height: 100vh;
-`;
-
-const HeroSection = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/overseas-hero.jpg') center/cover;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-`;
-
-const ContentWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-`;
-
-const CountrySection = styled.section`
-  margin-bottom: 4rem;
-`;
-
-const CountryTitle = styled.h2`
-  font-size: 2.5rem;
-  color: var(--slate-blue);
-  margin-bottom: 2rem;
-  font-family: var(--font-heading);
-`;
-
-const ActivitySection = styled.div`
-  margin-bottom: 3rem;
-`;
-
-const ActivityTitle = styled.h3`
-  font-size: 1.8rem;
-  color: var(--alpine-teal);
-  margin-bottom: 1.5rem;
-  font-family: var(--font-heading);
-`;
-
-const LocationGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-`;
-
-const LocationCard = styled.div`
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-const LocationImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-`;
-
-const LocationContent = styled.div`
-  padding: 1.5rem;
-`;
-
-const LocationName = styled.h4`
-  font-size: 1.4rem;
-  color: var(--slate-blue);
-  margin-bottom: 0.5rem;
-  font-family: var(--font-heading);
-`;
-
-const LocationSeason = styled.p`
-  color: var(--dawn-orange);
-  font-weight: 600;
-  margin-bottom: 1rem;
-`;
-
-const LocationDescription = styled.p`
-  color: var(--rock-gray);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-`;
-
-const LocationDifficulty = styled.div`
-  display: flex;
-  align-items: center;
-  color: var(--slate-blue);
-  font-weight: 600;
-`;
-
-const ContactSection = styled.div`
-  text-align: center;
-  background: var(--slate-blue);
-  color: white;
-  padding: 4rem 2rem;
-  border-radius: 12px;
-  margin-top: 4rem;
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-family: var(--font-heading);
-  }
-
-  p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-  }
-`;
-
-const ContactButton = styled.a`
-  display: inline-block;
-  background: var(--dawn-orange);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: var(--alpine-teal);
-    transform: translateY(-2px);
-  }
-`;
 
 export default Overseas; 
