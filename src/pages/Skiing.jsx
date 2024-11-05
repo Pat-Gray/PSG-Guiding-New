@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ServiceBadges from '../components/common/ServiceBadges';
+import Gallery from '../components/Gallery'
+
 import SkiHero from '../Images/SkiHero.jpg'
-import ConnieImg from '../images/Connie.jpg';
+import ConnieImg from '../images/ConnieImage.jpg';
+import patNorway from '../images/patNorway.jpg'
 import Plateau from '../images/plateau.webp'
 import Japan1 from '../images/Japan1.jpg'
-
-import Gallery from '../components/Gallery'
-import patNorway from '../images/patNorway.jpg'
-
 import Sunrise from '../images/Sunrise.jpg'
 import SkiBelay from '../images/SkiBelay.jpg'
 import TransitionJapan from '../images/TransitionJapan.webp'
