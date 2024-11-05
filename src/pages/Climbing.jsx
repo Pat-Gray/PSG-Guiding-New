@@ -1,24 +1,15 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import RidgeClimbing from "../Images/ridgeClimbing.webp"
-import PetTrogan from "../Images/PetTrogan.webp"
-import PetRidge from '../Images/Pet-on-ridge.webp'
-
-import ServiceBadges from '../components/common/ServiceBadges';
-import SkiMountaineering from '../images/SkiMountaineeringImage.jpg'
-import Malte from '../images/patMalteBrun.webp'
-import PatNazomi from '../images/pat-nazomi.webp'
-import Instruction from '../images/Instruction.jpg'
-import RockClimbing from '../images/RockClimbing.jpg'
 import Gallery from '../components/Gallery';
+import ServiceBadges from '../components/common/ServiceBadges';
 
 const images = [
-  SkiMountaineering,
-  Malte,
-  PatNazomi,
-  Instruction,
-  RockClimbing
+  '/images/SkiMountaineeringImage-1200.webp',
+  '/images/patMalteBrun-1200.webp',
+  '/images/pat-nazomi-1200.webp',
+  '/images/Instruction-1200.webp',
+  '/images/RockClimbing-1200.webp'
 ];
 
 const Climbing = () => {
@@ -38,7 +29,7 @@ const Climbing = () => {
             "Instructional courses"
           ],
           description: "Technical alpine climbing in New Zealand's Southern Alps. From moderate snow and ice routes to challenging mixed climbing.",
-          image: Malte
+          image: '/images/patMalteBrun-1200.webp'
         },
         {
           name: "Ice Climbing",
@@ -49,7 +40,7 @@ const Climbing = () => {
             "South Face Hicks",
           ],
           description: "Ice Climbing private guiding on technical ice routes",
-          image: PatNazomi
+          image: '/images/pat-nazomi-1200.webp'
         },
         {
           name: "Rock Climbing Guiding",
@@ -60,7 +51,7 @@ const Climbing = () => {
             "Overseas Trips Available"
           ],
           description: "Guiding, instruction and courses for Rock Climbing and Rope Resuce.",
-          image: RockClimbing
+          image: '/images/RockClimbing-1200.webp'
         },
         {
           name: "Courses and Instruction",
@@ -72,7 +63,7 @@ const Climbing = () => {
             
           ],
           description: "Guiding, instruction and courses To stay safe in the mountains",
-          image: Instruction
+          image: '/images/Instruction-1200.webp'
         },
       
       ]
@@ -86,7 +77,7 @@ const Climbing = () => {
     {
       title: "Tailored Alpine Adventures",
       description: "Let us craft a unique alpine experience that builds on your past climbs and pushes your boundaries. Whether you're looking to conquer new peaks or refine your skills, we'll design a journey that matches your aspirations.",
-      image: RidgeClimbing,
+      image: '/images/ridgeClimbing-1200.webp',
       highlights: [
         "Trip selections based on experience",
         "Skill enhancement",
@@ -96,7 +87,7 @@ const Climbing = () => {
     {
       title: "Bespoke Rock Climbing Trips",
       description: "Experience the thrill of rock climbing with a personalized itinerary. From single-pitch sport climbs to multi-pitch trad adventures, we'll tailor the perfect climbing trip based on your previous experiences and future goals.",
-      image: PetTrogan,
+      image: '/images/PetTrogan-1200.webp',
       highlights: [
         "Handpicked routes",
         "Technique improvement",
@@ -109,7 +100,7 @@ const Climbing = () => {
     {
       title: "Personalised Overseas Climbing Trips",
       description: "Get in touch if you have a dream climbing trip in mind.  Let's make it happen.",
-      image: SkiMountaineering,
+      image: '/images/SkiMountaineeringImage-1200.webp',
       highlights: [
         "Build on previous experience",
         "Customised trips",
@@ -173,7 +164,9 @@ const Climbing = () => {
             <LocationGrid>
               {activity.locations.map((location, locIndex) => (
                 <LocationCard key={locIndex}>
-                  <LocationImage src={location.image} alt={location.name} />
+                  <ImageContainer>
+                    <LocationImage src={location.image} alt={location.name} />
+                  </ImageContainer>
                   <LocationContent>
                     <LocationHeader>
                       <LocationName>{location.name}</LocationName>
@@ -225,7 +218,7 @@ const ClimbingWrapper = styled.div`
 const HeroSection = styled.div`
   height: 70vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(${PetRidge}) center/cover;
+    url('/images/Pet-on-ridge-1200.webp') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -281,12 +274,22 @@ const LocationCard = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
 `;
 
 const LocationImage = styled.img`
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
 `;
 
 const LocationContent = styled.div`
@@ -423,6 +426,10 @@ const JourneyImage = styled.img`
   width: 100%;
   height: 300px;
   object-fit: cover;
+  object-position: center;
+  aspect-ratio: 16/9;
+  margin: 0;
+  display: block;
 `;
 
 const JourneyContent = styled.div`

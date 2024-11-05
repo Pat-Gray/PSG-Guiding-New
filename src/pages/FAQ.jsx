@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Instruction2 from '../images/Instruction2.jpg'
 // Use optimized images
-const HeroBackground = '/images/WestCoast-1200.webp';  // Main image
-const HeroBackgroundTiny = '/images/WestCoast-placeholder.webp';  // Blur placeholder
+const HeroBackground = '/images/instruction2-1200.webp';  // Main image
+const HeroBackgroundTiny = '/images/instruction2-placeholder.webp';  // Blur placeholder
 
 const FAQ = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -120,7 +119,10 @@ const FAQWrapper = styled.div`
 
 const FAQHero = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(${Instruction2}) center/cover;
+    ${props => props.isLoaded 
+      ? `url(${HeroBackground})`
+      : `url(${HeroBackgroundTiny})`} 
+    center/cover;
     
   padding: 6rem 2rem;
   text-align: center;

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { locations } from '../../utils/locations';
 
 const OptimizedLocationCard = ({ location }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -53,7 +52,7 @@ const OptimizedLocationCard = ({ location }) => {
 const FeaturedLocations = () => {
   // Preload the first few images
   useEffect(() => {
-    const preloadCount = 3; // Preload first 3 images
+    const preloadCount = 3;
     locations.slice(0, preloadCount).forEach(location => {
       const img = new Image();
       img.src = location.image;

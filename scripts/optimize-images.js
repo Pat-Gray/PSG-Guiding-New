@@ -24,9 +24,9 @@ async function optimizeImages() {
         .resize({
           width: 1200,
           withoutEnlargement: true,
-          fit: 'contain'
+          fit: 'cover'
         })
-        .webp({ quality: 80 })
+        .webp({ quality: 90 })
         .toFile(path.join(outputDir, `${path.parse(file).name}-1200.webp`));
 
       // Create smaller versions
@@ -34,9 +34,9 @@ async function optimizeImages() {
         .resize({
           width: 800,
           withoutEnlargement: true,
-          fit: 'contain'
+          fit: 'cover'
         })
-        .webp({ quality: 80 })
+        .webp({ quality: 75 })
         .toFile(path.join(outputDir, `${path.parse(file).name}-800.webp`));
 
       // Create placeholder versions

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Stock from '../Images/Stockimage.jpg'
+
 const Contact = () => {
   const whatsappNumber = "+64 22 561 8308"; // Replace with actual number
   const instagramHandle = "sheclimbs.skis"; // Replace with actual handle
@@ -100,7 +100,7 @@ const ContactWrapper = styled.div`
 
 const ContactHero = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(${Stock}) center/cover;
+    url('/images/Stockimage-1200.webp') center/cover;
   height: 60vh;
   display: flex;
   align-items: center;
