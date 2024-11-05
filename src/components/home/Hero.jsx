@@ -83,7 +83,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="text-center text-snow-white max-w-[90%] md:max-w-[800px] px-4">
           <h1 
-            className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[4.2rem] 
+            className="font-heading text-4xl md:text-5xl lg:text-[4.2rem] 
                        font-normal mb-3 xs:mb-4 sm:mb-6 tracking-[0.02em] leading-tight"
             style={{ 
               visibility: isLoaded ? 'visible' : 'hidden',
@@ -93,7 +93,7 @@ const Hero = () => {
             Personalized Mountain Experiences
           </h1>
           <p 
-            className="font-body text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl 
+            className="font-body text-2xl md:text-lg lg:text-xl 
                        font-light mb-3 xs:mb-4 sm:mb-6 tracking-[0.04em] leading-relaxed opacity-90
                        mx-auto"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
