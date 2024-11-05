@@ -5,11 +5,22 @@ import MobileBackground from '../../../public/images/ConnieImage-1200.webp';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    // Initial check
+    const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Check immediately
+    checkMobile();
+
+    // Debounced resize handler
+    let timeoutId;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 150);
     };
 
     window.addEventListener('resize', handleResize);
@@ -32,7 +43,7 @@ const Hero = () => {
   }, [isMobile]);
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen overflow-hidden">
       {/* Blur loading placeholder */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
@@ -69,10 +80,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
       {/* Content */}
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-center text-snow-white max-w-[800px] px-8">
+      <div className="absolute inset-0 z-10 flex items-center justify-cente w-full">
+        <div className="text-center text-snow-white " >
           <h1 
-            className="font-heading text-[4.2rem] font-normal mb-6 tracking-[0.02em] leading-tight md:text-[3rem]"
+            className="font-heading text-[1.25rem] xs:text-3xl sm:text-5xl lg:text-[4.2rem] font-normal mb-3 xs:mb-4 sm:mb-6 tracking-[0.02em] leading-tight break-words"
             style={{ 
               visibility: isLoaded ? 'visible' : 'hidden',
               willChange: 'transform'
@@ -81,13 +92,13 @@ const Hero = () => {
             Personalized Mountain Experiences
           </h1>
           <p 
-            className="font-body text-xl font-light mb-10 tracking-[0.04em] leading-relaxed opacity-90"
+            className="font-body text-sm xs:text-base sm:text-lg lg:text-xl font-light mb-4 xs:mb-6 sm:mb-10 tracking-[0.04em] leading-relaxed opacity-90"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           >
             Professional mountain guiding in New Zealand, Canada, and Norway with expertise in technical alpine climbing and ski mountaineering
           </p>
           <p 
-            className="font-body text-xl font-light mb-10 tracking-[0.04em] leading-relaxed opacity-90"
+            className="font-body text-sm xs:text-base sm:text-lg lg:text-xl font-light mb-4 xs:mb-6 sm:mb-10 tracking-[0.04em] leading-relaxed opacity-90"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           >
             Focus on tailored, private guiding experiences
