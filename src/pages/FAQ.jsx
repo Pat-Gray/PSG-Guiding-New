@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import Instruction2 from '../images/Instruction2.jpg'
 // Use optimized images
 const HeroBackground = '/images/WestCoast-1200.webp';  // Main image
 const HeroBackgroundTiny = '/images/WestCoast-placeholder.webp';  // Blur placeholder
@@ -119,12 +119,12 @@ const FAQWrapper = styled.div`
 `;
 
 const FAQHero = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(${HeroBackground}) center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(${Instruction2}) center/cover;
     
   padding: 6rem 2rem;
   text-align: center;
-  height: 500px;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

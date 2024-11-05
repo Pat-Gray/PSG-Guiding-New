@@ -5,11 +5,26 @@ import RidgeClimbing from "../Images/ridgeClimbing.webp"
 import PetTrogan from "../Images/PetTrogan.webp"
 import PetRidge from '../Images/Pet-on-ridge.webp'
 import { useState, useEffect } from 'react';
+import ServiceBadges from '../components/common/ServiceBadges';
+import Gruber from '../images/Gruber.jpg'
+import Malte from '../images/patMalteBrun.webp'
+import PatNazomi from '../images/pat-nazomi.webp'
+import Instruction from '../images/Instruction.jpg'
+import RockClimbing from '../images/RockClimbing.jpg'
+import Gallery from '../components/Gallery';
+
+const images = [
+  Gruber,
+  Malte,
+  PatNazomi,
+  Instruction,
+  RockClimbing
+];
 
 const Climbing = () => {
   const activities = [
     {
-      title: "Alpine Climbing",
+      title: "Alpine Climbing, Mountaineering & Rock Climbing",
       locations: [
         {
           name: "New Zealand Alps",
@@ -23,61 +38,48 @@ const Climbing = () => {
             "Instructional courses"
           ],
           description: "Technical alpine climbing in New Zealand's Southern Alps. From moderate snow and ice routes to challenging mixed climbing.",
-          image: "/images/nz-alps.jpg"
+          image: Malte
         },
         {
-          name: "Canadian Rockies",
+          name: "Ice Climbing",
           season: "Jun - Sep",
           highlights: [
-            "Ice Climbing",
-            "Ice Fields Parkway",
-            "Weeeping wall",
-            "Professor Falls",
-            "Louise Falls"
+            "South Face Douglas",
+            "Vampire",
+            "South Face Hicks",
           ],
-          description: "Classic ice climbing routes in the heart of the Canadian Rockies. Experience climbing in arguably the best ice climbing destination in the world.",
-          image: "/images/canadian-rockies.jpg"
+          description: "Ice Climbing private guiding on technical ice routes",
+          image: PatNazomi
         },
         {
-          name: "New Zealand Winter",
-          season: "Jun - Sep",
+          name: "Rock Climbing Guiding",
+          season: "All Year",
           highlights: [
-            "Wye Creek",
-            "Remarkables",
-            "Mt Cook National Park"
+            "Wanaka",
+            "Courses",
+            "Overseas Trips Available"
           ],
-          description: "Technical ice and mixed climbing in the Southern Alps.",
-          image: "/images/nz-ice.jpg"
-        }
+          description: "Guiding, instruction and courses for Rock Climbing and Rope Resuce.",
+          image: RockClimbing
+        },
+        {
+          name: "Courses and Instruction",
+          season: "All Year",
+          highlights: [
+            "Rope Rescue",
+            "Mountaineering Skills",
+            "Cravasse Rescue",
+            
+          ],
+          description: "Guiding, instruction and courses To stay safe in the mountains",
+          image: Instruction
+        },
+      
       ]
     },
-    {
-      title: "Norwegian Rock Climbing",
-      locations: [
-        {
-          name: "Lofoten Islands",
-          season: "Jun - Sep",
-          highlights: [
-            "Presten",
-            "Svolværgeita",
-            "Vestpillaren"
-          ],
-          description: "World-renowned granite climbing above the Arctic Circle. Multi-pitch routes with stunning ocean views under the midnight sun.",
-          image: "/images/lofoten.jpg"
-        },
-        {
-          name: "New Zealand Climbing",
-          season: "Year-round",
-          highlights: [
-            "Technical rope course",
-            "Sport climbing",
-            "Trad climbing",
-          ],
-          description: "Sport and trad climbing across New Zealand. From single pitch to multi-pitch, there's something for everyone.",
-          image: "/images/nz-rock.jpg"
-        }
-      ]
-    }
+    
+      
+    
   ];
 
   const personalizedJourneys = [
@@ -107,7 +109,7 @@ const Climbing = () => {
     {
       title: "Personalised Overseas Climbing Trips",
       description: "Get in touch if you have a dream climbing trip in mind.  Let's make it happen.",
-      image: "/images/ice-experience.jpg",
+      image: Gruber,
       highlights: [
         "Build on previous experience",
         "Customised trips",
@@ -138,7 +140,7 @@ const Climbing = () => {
       </HeroSection>
 
       <PersonalizedSection>
-        
+        <ServiceBadges />
 
         <PersonalizedContent>
           {personalizedJourneys.map((journey, index) => (
@@ -198,6 +200,7 @@ const Climbing = () => {
           </ActivitySection>
         ))}
 
+
         <CTASection>
           <CTAContent>
             <CTATitle>Ready for Your Next Adventure?</CTATitle>
@@ -210,7 +213,7 @@ const Climbing = () => {
         </CTASection>
       </ContentSection>
 
-      
+      <Gallery images={images} />
     </ClimbingWrapper>
   );
 };
@@ -391,6 +394,7 @@ const CTAButton = styled(Link)`
 const PersonalizedSection = styled.section`
   background: var(--snow-white);
   padding: 4rem;
+  padding-top: 0;
   border-radius: 12px;
   text-align: center;
   color: var(--slate-blue);

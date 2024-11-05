@@ -1,44 +1,32 @@
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import ServiceBadges from '../components/common/ServiceBadges';
+import SkiHero from '../Images/SkiHero.jpg'
+import ConnieImg from '../images/Connie.jpg';
+import Plateau from '../images/plateau.webp'
+import Japan1 from '../images/Japan1.jpg'
+
+import Gallery from '../components/Gallery'
+import patNorway from '../images/patNorway.jpg'
+
+import Sunrise from '../images/Sunrise.jpg'
+import SkiBelay from '../images/SkiBelay.jpg'
+import TransitionJapan from '../images/TransitionJapan.webp'
+import PetSkiing from '../images/petskiing.webp'
 
 const Skiing = () => {
-  const personalizedJourneys = [
-    {
-      title: "Tailored Backcountry Skiing",
-      description: "Experience the thrill of backcountry skiing with a personalized itinerary. Whether you're seeking untouched powder or challenging descents, we'll craft the perfect skiing adventure based on your skills and aspirations.",
-      image: "/images/backcountry-skiing.jpg",
-      highlights: [
-        "Custom route selection",
-        "Avalanche safety",
-        "Skill enhancement"
-      ]
-    },
-    {
-      title: "Bespoke Ski Touring Adventures",
-      description: "Explore remote ski touring destinations with a bespoke experience. From gentle tours to steep couloirs, we'll tailor the perfect trip to match your previous experiences and future goals.",
-      image: "/images/ski-touring.jpg",
-      highlights: [
-        "Handpicked routes",
-        "Technique improvement",
-        "Goal-oriented skiing"
-      ]
-    },
-    {
-      title: "Exclusive Heli-Skiing Experiences",
-      description: "Dive into the world of heli-skiing with a bespoke experience. We'll select the best runs for your skill level and ambitions, ensuring a safe and exhilarating adventure.",
-      image: "/images/heli-skiing.jpg",
-      highlights: [
-        "Tailored heli-runs",
-        "Safety-focused",
-        "Skill progression"
-      ]
-    }
-  ];
+  const skiingImages = [
+    
+    PetSkiing,
+    
+    Sunrise,
+    SkiBelay,
+    TransitionJapan,
+  ]
 
   const skiingActivities = [
     {
-      title: "Backcountry Skiing",
+      title: "Backcountry Skiing In New Zealand",
       locations: [
         {
           name: "New Zealand Alps",
@@ -48,59 +36,71 @@ const Skiing = () => {
             "Treble Cone Backcountry",
             "Remarkables Range"
           ],
-          description: "Explore the untouched powder of New Zealand's Southern Alps. Perfect for those seeking adventure and solitude.",
-          image: "/images/nz-backcountry.jpg"
+          description: "Explore the amazing terrain of New Zealand's Southern Alps. Perfect for those seeking adventure or those seeking to gain experience and knowledge of the backcountry.",
+          image: Plateau
         },
         {
-          name: "Canadian Rockies",
-          season: "Dec - Apr",
+          name: "Avalanche Courses",
+          season: "Jun - Sept",
           highlights: [
-            "Banff National Park",
-            "Jasper National Park",
-            "Kootenay National Park"
+            "Based from Wanaka",
+            
           ],
-          description: "Experience the vast wilderness and deep powder of the Canadian Rockies. A must for any serious backcountry skier.",
+          description: "Gain valuable skills and knowledge of avalanches, resuce, and snowpack knowledge.",
           image: "/images/canadian-backcountry.jpg"
+        },
+        {
+          name: "Ski Mountaineering",
+          season: "Jun - Sept",
+          highlights: [
+            "Mount Cook National Park",
+            
+          ],
+          description: "Ski-Mountaineering for those with high ski ability and want to experience New Zealand's best ski descents",
+          image: ConnieImg
         }
       ]
     },
     {
-      title: "Ski Touring",
+      title: "Overseas Ski Touring",
       locations: [
         {
           name: "Norwegian Fjords",
           season: "Feb - May",
           highlights: [
             "Lyngen Alps",
-            "Sunnmøre Alps",
-            "Romsdalen"
+            "Lofoten",
+        
           ],
-          description: "Ski from summit to sea in the stunning Norwegian fjords. A unique experience combining skiing and breathtaking views.",
-          image: "/images/norwegian-fjords.jpg"
+          description: "Ski from summit to sea in the stunning Norwegian fjords. A once in a lifetime experience combining northern lights, amazing ski terrain and breathtaking views.",
+          image: patNorway
         },
         {
-          name: "Alps of New Zealand",
-          season: "Jul - Sep",
+          name: "Japan Powder Skiing",
+          season: "Dec - Mar",
           highlights: [
-            "Aoraki/Mount Cook",
-            "Mount Aspiring",
-            "Fiordland"
+            "Niseko",
+            "Central Hokkaido",
+            "Honshu"
           ],
-          description: "Discover the beauty of New Zealand's Alps with guided ski tours. Perfect for those looking to explore new terrain.",
-          image: "/images/nz-alps-ski.jpg"
+          description: "Experience the best powder skiing in the world in the mountains of Japan with unquie culture, food and onsens.",
+          image: Japan1
         }
       ]
     }
   ];
 
+
   return (
-    <SkiingWrapper>
-      <HeroSection>
-        <HeroContent>
+    <div className="min-h-screen">
+      <div style={{ backgroundImage: `url(${SkiHero})` }} className="relative h-[70vh] bg-[url('../../public/images/SkiHero.jpg')] bg-center bg-cover flex items-center justify-center text-snow-white">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div className="relative text-center max-w-[800px] px-8">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="text-6xl mb-4 font-heading font-bold"
           >
             Skiing Adventures
           </motion.h1>
@@ -108,300 +108,66 @@ const Skiing = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl opacity-90"
           >
             From backcountry powder to heli-skiing, explore the world's best skiing destinations
           </motion.p>
-        </HeroContent>
-      </HeroSection>
+        </div>
+      </div>
 
-      <ContentSection>
+      <ServiceBadges />
+
+      <div className="max-w-[1200px] mx-auto py-16 px-8">
         {skiingActivities.map((activity, index) => (
-          <ActivitySection key={index}>
-            <ActivityTitle>{activity.title}</ActivityTitle>
-            <LocationGrid>
+          <section key={index} className="mb-24">
+            <h2 className="text-slate-blue text-4xl mb-8 font-heading">
+              {activity.title}
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {activity.locations.map((location, locIndex) => (
-                <LocationCard key={locIndex}>
-                  <LocationImage src={location.image} alt={location.name} />
-                  <LocationContent>
-                    <LocationHeader>
-                      <LocationName>{location.name}</LocationName>
-                      <LocationSeason>{location.season}</LocationSeason>
-                    </LocationHeader>
-                    <LocationDescription>
+                <div key={locIndex} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                  <img 
+                    src={location.image} 
+                    alt={location.name} 
+                    className="w-full h-[300px] object-cover"
+                  />
+                  <div className="p-8">
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="text-slate-blue text-2xl font-heading">
+                        {location.name}
+                      </h3>
+                      <span className="text-alpine-teal font-medium">
+                        {location.season}
+                      </span>
+                    </div>
+                    <p className="text-slate-blue mb-6 leading-relaxed">
                       {location.description}
-                    </LocationDescription>
-                    <HighlightsList>
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                       {location.highlights.map((highlight, hIndex) => (
-                        <HighlightItem key={hIndex}>
-                          <i className="fas fa-mountain"></i>
+                        <div key={hIndex} className="flex items-center gap-2 text-slate-blue">
+                          <i className="fas fa-mountain text-alpine-teal text-sm"></i>
                           {highlight}
-                        </HighlightItem>
+                        </div>
                       ))}
-                    </HighlightsList>
-                    <ExploreButton to={`/skiing/${activity.title.toLowerCase()}/${location.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    </div>
+                    <Link 
+                      to={`/skiing/${activity.title.toLowerCase()}/${location.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="inline-block bg-alpine-teal text-white px-6 py-3 rounded hover:bg-sage-green transition-all duration-200 hover:-translate-y-0.5"
+                    >
                       Explore Routes
-                    </ExploreButton>
-                  </LocationContent>
-                </LocationCard>
+                    </Link>
+                  </div>
+                </div>
               ))}
-            </LocationGrid>
-          </ActivitySection>
+            </div>
+          </section>
         ))}
-      </ContentSection>
+      </div>
 
-      <PersonalizedSection>
-        <PersonalizedHeader>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Personalized Skiing Journeys
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Let us guide you through a tailored skiing experience that builds on your past and sets new goals
-          </motion.p>
-        </PersonalizedHeader>
-
-        <PersonalizedContent>
-          {personalizedJourneys.map((journey, index) => (
-            <JourneyCard key={index}>
-              <JourneyImage src={journey.image} alt={journey.title} />
-              <JourneyContent>
-                <JourneyTitle>{journey.title}</JourneyTitle>
-                <JourneyDescription>{journey.description}</JourneyDescription>
-                <JourneyHighlights>
-                  {journey.highlights.map((highlight, hIndex) => (
-                    <HighlightItem key={hIndex}>
-                      <i className="fas fa-check"></i>
-                      {highlight}
-                    </HighlightItem>
-                  ))}
-                </JourneyHighlights>
-                <ExploreButton to="/contact">
-                  Plan Your Journey
-                </ExploreButton>
-              </JourneyContent>
-            </JourneyCard>
-          ))}
-        </PersonalizedContent>
-      </PersonalizedSection>
-    </SkiingWrapper>
+     <Gallery images={skiingImages} />
+    </div>
   );
 };
-
-const SkiingWrapper = styled.div`
-  min-height: 100vh;
-`;
-
-const HeroSection = styled.div`
-  height: 70vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/skiing-hero.jpg') center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--snow-white);
-`;
-
-const HeroContent = styled.div`
-  text-align: center;
-  max-width: 800px;
-  padding: 0 2rem;
-
-  h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    font-family: var(--font-heading);
-  }
-
-  p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-`;
-
-const ContentSection = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-`;
-
-const ActivitySection = styled.section`
-  margin-bottom: 6rem;
-`;
-
-const ActivityTitle = styled.h2`
-  color: var(--slate-blue);
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  font-family: var(--font-heading);
-`;
-
-const LocationGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 2rem;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const LocationCard = styled.div`
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-`;
-
-const LocationImage = styled.img`
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-`;
-
-const LocationContent = styled.div`
-  padding: 2rem;
-`;
-
-const LocationHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
-
-const LocationName = styled.h3`
-  color: var(--slate-blue);
-  font-size: 1.8rem;
-  font-family: var(--font-heading);
-`;
-
-const LocationSeason = styled.span`
-  color: var(--alpine-teal);
-  font-weight: 500;
-`;
-
-const LocationDescription = styled.p`
-  color: var(--slate-blue);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-`;
-
-const HighlightsList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-`;
-
-
-
-
-
-const PersonalizedSection = styled.section`
-  background: var(--glacier-blue);
-  padding: 6rem 2rem;
-`;
-
-const PersonalizedHeader = styled.div`
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-
-  h2 {
-    color: var(--slate-blue);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-family: var(--font-heading);
-  }
-
-  p {
-    color: var(--slate-blue);
-    font-size: 1.2rem;
-    opacity: 0.8;
-  }
-`;
-
-const PersonalizedContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 3rem;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const JourneyCard = styled.div`
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-`;
-
-const JourneyImage = styled.img`
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-`;
-
-const JourneyContent = styled.div`
-  padding: 2rem;
-`;
-
-const JourneyTitle = styled.h3`
-  color: var(--slate-blue);
-  font-size: 1.8rem;
-  font-family: var(--font-heading);
-  margin-bottom: 1rem;
-`;
-
-const JourneyDescription = styled.p`
-  color: var(--slate-blue);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-`;
-
-const JourneyHighlights = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-`;
-
-const HighlightItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--slate-blue);
-  
-  i {
-    color: var(--alpine-teal);
-    font-size: 0.9rem;
-  }
-`;
-
-const ExploreButton = styled(Link)`
-  display: inline-block;
-  background: var(--alpine-teal);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    background: var(--sage-green);
-    transform: translateY(-2px);
-  }
-`;
 
 export default Skiing;

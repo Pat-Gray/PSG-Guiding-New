@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import SkiShot from '../images/SkiShot.jpg'
 
 const Overseas = () => {
   const destinations = [
@@ -9,13 +10,7 @@ const Overseas = () => {
         {
           type: "Skiing",
           locations: [
-            {
-              name: "Lyngen Alps",
-              description: "Spectacular ski touring above the Arctic fjords.",
-              season: "March - May",
-              difficulty: "Intermediate to Advanced",
-              image: "/images/lyngen-alps.jpg"
-            },
+            
             {
               name: "Lofoten Islands",
               description: "Unique ski touring from summit to sea.",
@@ -72,24 +67,28 @@ const Overseas = () => {
 
   return (
     <PageWrapper>
-      <HeroSection>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl font-heading text-white text-center"
-        >
-          International Adventures
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white text-xl text-center mt-4 max-w-2xl mx-auto"
-        >
-          Experience world-class climbing and skiing destinations across the globe
-        </motion.p>
-      </HeroSection>
+      <div style={{ backgroundImage: `url(${SkiShot})` }} className="relative h-[80vh] bg-[url('../../public/images/SkiHero.jpg')] bg-center bg-cover flex items-center justify-center text-snow-white">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div className="relative text-center max-w-[800px] px-8">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-6xl mb-4 font-heading font-bold"
+          >
+            Overseas Adventures
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl opacity-90"
+          >
+            From backcountry powder to Ice Climbing to big mountain climbing.
+          </motion.p>
+        </div>
+      </div>
+
 
       <ContentWrapper>
         {destinations.map((destination, index) => (
