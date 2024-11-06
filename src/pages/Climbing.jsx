@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -333,20 +334,6 @@ const HighlightItem = styled.div`
   }
 `;
 
-const ExploreButton = styled(Link)`
-  display: inline-block;
-  background: var(--alpine-teal);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    background: var(--sage-green);
-    transform: translateY(-2px);
-  }
-`;
 
 const CTASection = styled.section`
   background: var(--slate-blue);
@@ -398,11 +385,6 @@ const PersonalizedSection = styled.section`
   color: var(--slate-blue);
 `;
 
-const PersonalizedHeader = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-`;
 
 const PersonalizedContent = styled.div`
   display: grid;

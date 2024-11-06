@@ -1,7 +1,6 @@
-// eslint-disable-next-line react/prop-types
+/* eslint-disable react/prop-types */
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { locations } from '../../utils/locations';
 
 const OptimizedLocationCard = ({ location }) => {
@@ -27,16 +26,10 @@ const OptimizedLocationCard = ({ location }) => {
         <p className="text-snow-white mb-6 leading-relaxed">
           {location.description}
         </p>
-        <div className="text-snow-white mb-4 text-sm">
-          Season: {location.season}
+        <div className="text-snow-white mb-4 text-sm ">
+          {location.season}
         </div>
-        <Link 
-          to={`/locations/${location.name.toLowerCase().replace(/\s+/g, '-')}`}
-          className="bg-alpine-teal text-snow-white px-6 py-3 rounded inline-block w-fit 
-                     hover:-translate-y-1 transition-transform duration-200 opacity-100"
-        >
-          Explore
-        </Link>
+     
       </div>
     </div>
   );

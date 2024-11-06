@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/no-unescaped-entities */
+import { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
@@ -230,21 +231,7 @@ const Input = styled.input`
   }
 `;
 
-const Select = styled.select`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  font-size: 1rem;
-  background: white;
-  cursor: pointer;
-  
-  &:focus {
-    outline: none;
-    border-color: var(--alpine-teal);
-    box-shadow: 0 0 0 3px rgba(102, 153, 155, 0.1);
-  }
-`;
+
 
 const TextArea = styled.textarea`
   width: 100%;
@@ -347,13 +334,3 @@ const EmailButton = styled(SocialButton)`
   }
 `;
 
-const ContactInfo = styled.div`
-  margin-top: 3rem;
-`;
-
-const InfoItem = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-`; 

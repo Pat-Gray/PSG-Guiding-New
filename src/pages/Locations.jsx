@@ -1,7 +1,6 @@
-import  { useState, Suspense } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import  { useState } from 'react';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import L from 'leaflet';
 
 // Import map styles
@@ -359,42 +358,5 @@ const CardDescription = styled.p`
   font-size: 0.9rem;
 `;
 
-const CardDetails = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-`;
-
-const DetailItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-`;
-
-const Activities = styled.div`
-  display: flex;
-  gap: 0.5rem;
-`;
-
-const Activity = styled.div`
-  background: #f0f0f0;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-`;
-
-const ExploreButton = styled(Link)`
-  display: inline-block;
-  background: var(--alpine-teal);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    background: var(--sage-green);
-    transform: translateY(-2px);
-  }
-`;
 
 export default Locations;

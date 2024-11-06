@@ -129,22 +129,6 @@ const FooterLink = styled(Link)`
   }
 `;
 
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const SocialLink = styled.a`
-  color: var(--snow-white);
-  font-size: 1.5rem;
-  opacity: 0.8;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    opacity: 1;
-    color: var(--alpine-teal);
-  }
-`;
 
 const FooterBottom = styled.div`
   max-width: 1200px;

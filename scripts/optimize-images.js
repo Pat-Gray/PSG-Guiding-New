@@ -4,7 +4,6 @@ import path from 'path';
 
 const inputDir = 'src/Images';
 const outputDir = 'public/images';
-const BATCH_SIZE = 2; // Reduced batch size
 const TIMEOUT = 30000; // 30 second timeout per image
 
 async function ensureDir(dir) {

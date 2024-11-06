@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import styled from 'styled-components';
 
 const ContactSection = () => {
@@ -22,7 +23,7 @@ const ContactSection = () => {
 };
 
 const ContactWrapper = styled.section`
-  background: var(--charcoal);
+  background: var(--slate-blue);
   color: var(--snow-white);
   padding: 6rem 2rem;
 `;
