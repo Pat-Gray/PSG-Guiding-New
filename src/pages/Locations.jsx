@@ -22,7 +22,6 @@ const locations = [
     id: 1,
     name: "Aoraki/Mount Cook",
     position: [-43.5950, 170.1410],
-    image: "/images/mount-cook.jpg",
     season: "Nov - Apr",
     description: "New Zealand's highest peak. Technical alpine climbing and ski touring opportunities.",
     activities: ["Alpine Climbing", "Ski Touring"],
@@ -33,7 +32,6 @@ const locations = [
     id: 2,
     name: "Mount Aspiring/Tititea",
     position: [-44.3833, 168.7333],
-    image: "/images/mt-aspiring.jpg",
     season: "Nov - Apr",
     description: "The 'Matterhorn of the South'. Classic alpine routes and ski touring.",
     activities: ["Alpine Climbing", "Ski Touring"],
@@ -44,7 +42,6 @@ const locations = [
     id: 3,
     name: "Remarkables",
     position: [-45.0333, 168.8167],
-    image: "/images/remarkables.jpg",
     season: "Jun - Oct",
     description: "Premier backcountry skiing and alpine climbing near Queenstown.",
     activities: ["Skiing", "Rock Climbing"],
@@ -55,7 +52,6 @@ const locations = [
     id: 4,
     name: "Treble Cone Backcountry",
     position: [-44.6333, 168.9000],
-    image: "/images/treble-cone.jpg",
     season: "Jun - Sep",
     description: "Extensive backcountry terrain with stunning views of Lake Wanaka.",
     activities: ["Skiing"],
@@ -66,7 +62,6 @@ const locations = [
     id: 5,
     name: "Wye Creek",
     position: [-45.0667, 168.8000],
-    image: "/images/wye-creek.jpg",
     season: "Year-round",
     description: "Sport climbing paradise with routes for all abilities.",
     activities: ["Rock Climbing"],
@@ -77,12 +72,101 @@ const locations = [
     id: 6,
     name: "Mount Taranaki",
     position: [-39.2967, 174.0639],
-    image: "/images/mt-taranaki.jpg",
     season: "Dec - Mar",
     description: "Iconic volcanic peak with alpine climbing and skiing opportunities.",
     activities: ["Alpine Climbing", "Skiing"],
     difficulty: "Intermediate",
     type: "mixed"
+  },
+  {
+    id: 7,
+    name: "Bugaboos",
+    position: [50.7500, -116.7500],
+    season: "Jun - Sep",
+    description: "Renowned for its granite spires and alpine climbing routes.",
+    activities: ["Alpine Climbing"],
+    difficulty: "Advanced",
+    type: "alpine"
+  },
+  {
+    id: 8,
+    name: "Sierra Nevada",
+    position: [36.5785, -118.2923],
+    season: "May - Oct",
+    description: "Home to some of the best alpine climbing in the US.",
+    activities: ["Alpine Climbing"],
+    difficulty: "Intermediate to Advanced",
+    type: "alpine"
+  },
+  {
+    id: 18,
+    name: "Chamonix",
+    position: [45.9237, 6.8694],
+    season: "Jun - Sep",
+    description: "Famous for its alpine climbing and skiing in the French Alps.",
+    activities: ["Alpine Climbing", "Skiing"],
+    difficulty: "Intermediate to Advanced",
+    type: "alpine"
+  },
+  {
+    id: 19,
+    name: "Yosemite",
+    position: [37.8651, -119.5383],
+    season: "Apr - Oct",
+    description: "Iconic rock climbing destination with world-renowned big wall routes.",
+    activities: ["Rock Climbing"],
+    difficulty: "Advanced",
+    type: "rock"
+  },
+  {
+    id: 20,
+    name: "Whistler Blackcomb",
+    position: [50.1163, -122.9574],
+    season: "Nov - Apr",
+    description: "One of the largest ski resorts in North America, known for its diverse terrain.",
+    activities: ["Skiing"],
+    difficulty: "All Levels",
+    type: "ski"
+  },
+  {
+    id: 21,
+    name: "Banff National Park",
+    position: [51.4968, -115.9281],
+    season: "Year-round",
+    description: "Offers a range of activities including skiing, hiking, and climbing.",
+    activities: ["Skiing", "Hiking", "Rock Climbing"],
+    difficulty: "All Levels",
+    type: "mixed"
+  },
+  {
+    id: 22,
+    name: "Zermatt",
+    position: [46.0207, 7.7491],
+    season: "Year-round",
+    description: "Home to the Matterhorn, offering skiing and alpine climbing.",
+    activities: ["Alpine Climbing", "Skiing"],
+    difficulty: "Intermediate to Advanced",
+    type: "alpine"
+  },
+  {
+    id: 23,
+    name: "Norway",
+    position: [61.0000, 8.0000],
+    season: "Nov - Apr",
+    description: "Offers a unique skiing experience with stunning fjords.",
+    activities: ["Skiing"],
+    difficulty: "Intermediate to Advanced",
+    type: "ski"
+  },
+  {
+    id: 24,
+    name: "Niseko, Japan",
+    position: [42.8048, 140.6874],
+    season: "Dec - Mar",
+    description: "Famous for its deep powder snow and ski resorts.",
+    activities: ["Skiing"],
+    difficulty: "Intermediate to Advanced",
+    type: "ski"
   }
 ];
 
@@ -126,8 +210,8 @@ const Locations = () => {
         </FilterBar>
 
         <MapContainer 
-          center={[-43.5950, 170.1410]} 
-          zoom={6} 
+          center={[16.0055, 12.1798]} 
+          zoom={2} 
           style={{ height: "100%", width: "100%" }}
           whenReady={() => setIsLoading(false)}
         >
@@ -157,25 +241,12 @@ const Locations = () => {
 
         {selectedLocation && (
           <InfoCard>
-            <CardImage src={selectedLocation.image} alt={selectedLocation.name} />
             <CardContent>
               <CardTitle>{selectedLocation.name}</CardTitle>
               <CardSeason>{selectedLocation.season}</CardSeason>
               <CardDescription>{selectedLocation.description}</CardDescription>
-              <CardDetails>
-                <DetailItem>
-                  <i className="fas fa-mountain"></i>
-                  {selectedLocation.difficulty}
-                </DetailItem>
-                <Activities>
-                  {selectedLocation.activities.map((activity, index) => (
-                    <Activity key={index}>{activity}</Activity>
-                  ))}
-                </Activities>
-              </CardDetails>
-              <ExploreButton to={`/locations/${selectedLocation.id}`}>
-                Explore Routes
-              </ExploreButton>
+              
+              
             </CardContent>
           </InfoCard>
         )}
@@ -213,7 +284,7 @@ const LoadingOverlay = styled.div`
 
 const FilterBar = styled.div`
   position: absolute;
-  top: 100px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -267,12 +338,6 @@ const InfoCard = styled.div`
   display: flex;
   max-width: 400px;
   z-index: 1000;
-`;
-
-const CardImage = styled.img`
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
 `;
 
 const CardContent = styled.div`

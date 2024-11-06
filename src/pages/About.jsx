@@ -10,11 +10,7 @@ import GuidePet from '../Images/GuidePet.webp'
 import Pet1 from '../Images/Pet1.webp'
 import NorwayIce from '../Images/PetNorwayIce.webp'
 const About = () => {
-  const certifications = [
-    { name: "IFMGA/UIAGM Mountain Guide", year: "2018" },
-    { name: "Avalanche Stage 2", year: "2017" },
-    { name: "Wilderness First Responder", year: "2016" },
-  ];
+  
 
   const values = [
     {
@@ -94,20 +90,21 @@ const About = () => {
 
           {/* Carousel Section - Right Side */}
           <div className="w-full md:w-1/2">
-            <div className="rounded-xl shadow-lg h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide>div]:h-full relative">
-              <Suspense fallback={<div className="loading-skeleton h-[400px] md:h-[600px]"></div>}>
-                <Slider {...sliderSettings}>
+            <div className="rounded-xl overflow-hidden h-[400px] md:h-[600px] relative">
+              <Suspense fallback={<div className="loading-skeleton h-full w-full"></div>}>
+                <Slider {...sliderSettings} className="h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full">
                   {carouselImages.map((image, index) => (
-                    <div key={index} className="relative h-full">
+                    <div key={index} className="relative h-full w-full">
                       <LazyLoadImage 
                         src={image.url} 
                         alt={image.caption}
-                        className="w-full h-[400px] md:h-[600px] object-cover rounded-xl"
+                        className="w-full h-full object-cover"
                         effect="blur"
                         placeholderSrc={image.url + '?quality=1'}
                         threshold={100}
+                        wrapperClassName="h-full w-full"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 rounded-b-xl">
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
                         <p className="text-lg text-center">{image.caption}</p>
                       </div>
                     </div>

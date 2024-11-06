@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import ServiceBadges from '../components/common/ServiceBadges';
 import Gallery from '../components/Gallery'
 
@@ -110,13 +112,13 @@ const Skiing = () => {
 
       <ServiceBadges />
 
-      <div className="max-w-[1200px] mx-auto py-16 px-8">
+      <div className="max-w-[1200px] mx-auto py-16 px-8 ">
         {skiingActivities.map((activity, index) => (
           <section key={index} className="mb-24">
             <h2 className="text-slate-blue text-4xl mb-8 font-heading">
               {activity.title}
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 [&>*:last-child:nth-child(2n+1)]:col-span-full [&>*:last-child:nth-child(2n+1)]:justify-self-center">
               {activity.locations.map((location, locIndex) => (
                 <div key={locIndex} className="bg-white rounded-xl overflow-hidden shadow-lg">
                   <img 
@@ -152,9 +154,62 @@ const Skiing = () => {
         ))}
       </div>
 
+      <CTASection>
+          <CTAContent>
+            <CTATitle>Ready for Your Next Adventure?</CTATitle>
+            <CTAText>
+              Whether you're new to climbing or an experienced alpinist, 
+              let's plan your next mountain objective together.
+            </CTAText>
+            <CTAButton to="/contact">Get in Touch</CTAButton>
+          </CTAContent>
+        </CTASection>
+
      <Gallery images={skiingImages} />
     </div>
   );
 };
+
+const CTAButton = styled(Link)`
+  display: inline-block;
+  background: var(--dawn-orange);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+`; 
+
+const CTASection = styled.section`
+  background: var(--slate-blue);
+  padding: 4rem;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--snow-white);
+`;
+
+const CTAContent = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+const CTATitle = styled.h2`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+`;
+
+const CTAText = styled.p`
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+`;
+
 
 export default Skiing;

@@ -408,6 +408,24 @@ const PersonalizedContent = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 2rem;
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    
+    & > *:last-child:nth-child(3) {
+      grid-column: 1 / -1;
+      max-width: 500px;
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    grid-template-columns: 1fr;
+    & > * {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
 `;
 
 const PersonalizedJourney = styled.div`

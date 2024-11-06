@@ -93,7 +93,7 @@ const Hero = () => {
             Personalized Mountain Experiences
           </h1>
           <p 
-            className="font-body text-2xl md:text-lg lg:text-xl 
+            className="font-body text-lg lg:text-xl 
                        font-light mb-3 xs:mb-4 sm:mb-6 tracking-[0.04em] leading-relaxed opacity-90
                        mx-auto"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
@@ -101,7 +101,7 @@ const Hero = () => {
             Professional mountain guiding in New Zealand, Canada, and Norway with expertise in technical alpine climbing and ski mountaineering
           </p>
           <p 
-            className="font-body text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl 
+            className="font-body text-lg lg:text-xl 
                        font-light mb-3 xs:mb-4 sm:mb-6 tracking-[0.04em] leading-relaxed opacity-90
                        mx-auto"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}

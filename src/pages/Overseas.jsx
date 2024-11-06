@@ -5,20 +5,8 @@ const Overseas = () => {
   const destinations = [
     {
       country: "Norway",
+      countryMap: "/images/NorwayMap.webp",
       activities: [
-        {
-          type: "Skiing",
-          locations: [
-            
-            {
-              name: "Lofoten Islands",
-              description: "Unique ski touring from summit to sea.",
-              season: "February - April",
-              difficulty: "Intermediate to Advanced",
-              image: "/images/ridgeClimbing-1200.webp"
-            }
-          ]
-        },
         {
           type: "Climbing",
           locations: [
@@ -27,7 +15,19 @@ const Overseas = () => {
               description: "World-class granite climbing in the midnight sun.",
               season: "June - September",
               difficulty: "All levels",
-              image: "/images/ridgeClimbing-1200.webp"
+              image: "/images/Stetind-1200.webp"
+            }
+          ]
+        },
+        {
+          type: "Skiing",
+          locations: [
+            {
+              name: "Northern Norway",
+              description: "Ski touring in the stunning fjords.",
+              season: "February - April",
+              difficulty: "Intermediate to Advanced",
+              image: "/images/patNorway-1200.webp"
             }
           ]
         }
@@ -36,6 +36,18 @@ const Overseas = () => {
     {
       country: "Canada",
       activities: [
+        {
+          type: "Ice Climbing",
+          locations: [
+            {
+              name: "Canadian Rockies",
+              description: "Challenging ice routes in a breathtaking setting.",
+              season: "December - March",
+              difficulty: "Advanced",
+              image: "/images/ridgeClimbing-1200.webp"
+            }
+          ]
+        },
         {
           type: "Skiing",
           locations: [
@@ -47,20 +59,34 @@ const Overseas = () => {
               image: "/images/ridgeClimbing-1200.webp"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      country: "Japan",
+      activities: [
         {
-          type: "Climbing",
+          type: "Powder Skiing",
           locations: [
             {
-              name: "Canadian Rockies",
-              description: "Classic alpine routes on limestone peaks.",
-              season: "June - September",
-              difficulty: "Intermediate to Advanced",
-              image: "/images/ridgeClimbing-1200.webp"
+              name: "Hokkaido",
+              description: "Experience the best powder skiing in the world.",
+              season: "December - March",
+              difficulty: "All levels",
+              image: "/images/Japan1-1200.webp"
             }
           ]
         }
       ]
+    }
+  ];
+
+  const otherLocations = [
+    {
+      image: "/images/OtherLocationImage.webp",
+      name: "China",
+      icon: "hiking",
+      activityType: "Activity Type"
     }
   ];
 
@@ -97,34 +123,66 @@ const Overseas = () => {
           <section key={index} className="mb-16">
             <h2 className="text-4xl text-slate-blue mb-8 font-heading">{destination.country}</h2>
             
-            {destination.activities.map((activity, actIndex) => (
-              <div key={actIndex} className="mb-12">
-                <h3 className="text-2xl text-alpine-teal mb-6 font-heading">{activity.type}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {activity.locations.map((location, locIndex) => (
-                    <div key={locIndex} className="bg-white rounded-xl overflow-hidden shadow-md">
-                      <img
-                        src={location.image}
-                        alt={location.name}
-                        
-                        className="w-full h-40 object-cover"
-                      />
-                      <div className="p-4">
-                        <h4 className="text-lg text-slate-blue mb-2 font-heading">{location.name}</h4>
-                        <p className="text-gray-600 mb-2">{location.description}</p>
-                        <p className="text-gray-500 mb-2">{location.season}</p>
-                        <div className="flex items-center">
-                          <i className="fas fa-mountain mr-2"></i>
-                          <span className="text-gray-500">{location.difficulty}</span>
+           
+              
+              <div className={`grid gap-8 ${destination.activities.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'} flex-1`}>
+                {destination.activities.map((activity, actIndex) => (
+                  <div key={actIndex} className="mb-12">
+                    <h3 className="text-2xl text-alpine-teal mb-6 font-heading">{activity.type}</h3>
+                    <div className={`grid gap-8 ${activity.locations.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+                      {activity.locations.map((location, locIndex) => (
+                        <div key={locIndex} className="bg-white rounded-xl overflow-hidden shadow-md">
+                          <img
+                            src={location.image}
+                            alt={location.name}
+                            className="w-full h-80 object-cover"
+                          />
+                          <div className="p-4">
+                            <h4 className="text-lg text-slate-blue mb-2 font-heading">{location.name}</h4>
+                            <p className="text-gray-600 mb-2">{location.description}</p>
+                            <p className="text-gray-500 mb-2">{location.season}</p>
+                            <div className="flex items-center">
+                              <i className="fas fa-mountain mr-2"></i>
+                              <span className="text-gray-500">{location.difficulty}</span>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+                ))}
+              </div>
+            
+          </section>
+        ))}
+
+        {/* Other Locations Section */}
+        <section className="mb-16">
+          <h2 className="text-4xl text-slate-blue mb-8 font-heading">Other Locations</h2>
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+            {otherLocations.map((location, index) => (
+              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md">
+                <img
+                  src={location.image}
+                  alt={location.name}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h4 className="text-lg text-slate-blue mb-2 font-heading">{location.name}</h4>
+                  <div className="flex items-center">
+                    <i className={`fas ${location.icon} mr-2`}></i>
+                    <span className="text-gray-500">{location.activityType}</span>
+                  </div>
                 </div>
               </div>
             ))}
-          </section>
-        ))}
+          </div>
+          <div className="text-center mt-8">
+            <a href="/contact" className="bg-dawn-orange text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300 hover:bg-alpine-teal">
+              Enquire about custom trips here
+            </a>
+          </div>
+        </section>
 
         <div className="text-center bg-slate-blue text-white p-8 rounded-xl">
           <h2 className="text-2xl mb-4 font-heading">Plan Your International Adventure</h2>

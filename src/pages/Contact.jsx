@@ -1,8 +1,40 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
-  const whatsappNumber = "+64 22 561 8308"; // Replace with actual number
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
+    console.log('Form submitted:', formData);
+
+    emailjs.send(
+      'service_o3vd634', // Replace with your EmailJS service ID
+      'template_usv2jef', // Replace with your EmailJS template ID
+      formData,
+      'hXAjj4thBMxE7eg1W' // Replace with your EmailJS public key (user ID)
+    )
+    .then((response) => {
+      console.log('Email sent successfully:', response);
+      setStatus('Email sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+      setStatus('Failed to send email. Please try again.');
+    });
+  };
+
+  const whatsappNumber = "+64225618308"; // Replace with actual number
   const instagramHandle = "sheclimbs.skis"; // Replace with actual handle
   const emailAddress = "Petrouchka@hotmail.com"; // Replace with actual email
 
@@ -29,16 +61,16 @@ const Contact = () => {
 
       <ContactContent>
         <FormSection>
-          <ContactForm>
+          <ContactForm onSubmit={handleSubmit}>
             <FormTitle>Send a Message</FormTitle>
             <InputGroup>
               <FormField>
                 <Label>Name</Label>
-                <Input type="text" placeholder="Your name" />
+                <Input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required />
               </FormField>
               <FormField>
                 <Label>Email</Label>
-                <Input type="email" placeholder="Your email" />
+                <Input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your email" required />
               </FormField>
             </InputGroup>
             
@@ -49,10 +81,14 @@ const Contact = () => {
               <TextArea 
                 placeholder="Tell me about your experience level and what you're hoping to achieve..."
                 rows="5"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
               />
             </FormField>
 
             <SubmitButton type="submit">Send Message</SubmitButton>
+            <p>{status}</p>
           </ContactForm>
         </FormSection>
 
