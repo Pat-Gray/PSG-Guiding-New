@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
 
 const Overseas = () => {
   const destinations = [
@@ -177,17 +177,13 @@ const Overseas = () => {
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <a href="/contact" className="bg-dawn-orange text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300 hover:bg-alpine-teal">
-              Enquire about custom trips here
-            </a>
-          </div>
+        
         </section>
 
         <div className="text-center bg-slate-blue text-white p-8 rounded-xl">
           <h2 className="text-2xl mb-4 font-heading">Plan Your International Adventure</h2>
           <p className="mb-6 text-lg">Ready to explore these world-class destinations? Get in touch to start planning your trip.</p>
-          <a href="/contact" className="bg-dawn-orange text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300 hover:bg-alpine-teal">Contact Us</a>
+          <Link to="/contact" className="bg-dawn-orange text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300 hover:bg-alpine-teal">Contact Us</Link>
         </div>
       </div>
     </div>
