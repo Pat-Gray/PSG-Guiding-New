@@ -62,10 +62,25 @@ const FAQ = () => {
 
   return (
     <FAQWrapper>
-      <FAQHero isLoaded={isLoaded}>
-        <h1>Frequently Asked Questions</h1>
-        <p>Find answers to common questions about mountain guiding and adventures</p>
-      </FAQHero>
+      <HeroSection>
+
+      <HeroContent>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Frequently Asked Questions
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            >
+            Find answers to common questions about mountain guiding and adventures
+          </motion.p> 
+        </HeroContent>
+            </HeroSection>
 
       <FAQContent>
         {faqs.map((category) => (
@@ -116,35 +131,34 @@ const FAQ = () => {
 const FAQWrapper = styled.div`
   min-height: 100vh;
 `;
-
-const FAQHero = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    ${props => props.isLoaded 
-      ? `url(${HeroBackground})`
-      : `url(${HeroBackgroundTiny})`} 
-    center/cover;
-    
-  padding: 6rem 2rem;
-  text-align: center;
+const HeroSection = styled.div`
   height: 70vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+    url('/images/instruction2-1200.webp') center/cover;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   color: var(--snow-white);
+`;
 
+const HeroContent = styled.div`
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+  
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
     font-family: var(--font-heading);
-    font-weight: 700;
   }
 
   p {
     font-size: 1.2rem;
-    opacity: 1;
+    opacity: 0.9;
   }
 `;
+
+
 
 const FAQContent = styled.div`
   max-width: 900px;

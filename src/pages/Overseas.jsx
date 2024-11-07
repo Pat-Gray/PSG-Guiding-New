@@ -103,7 +103,7 @@ const Overseas = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl mb-4 font-heading font-bold"
+            className="text-6xl mb-4 font-heading"
           >
             Overseas Adventures
           </motion.h1>

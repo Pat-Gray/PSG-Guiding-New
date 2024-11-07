@@ -2,38 +2,25 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import emailjs from 'emailjs-com';
+
+import {createEmailHandler} from '../utils/emailForm';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
 
+  const handleSubmit = createEmailHandler(setFormData, setStatus);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus('Sending...');
-    console.log('Form submitted:', formData);
-
-    emailjs.send(
-      'service_o3vd634', // Replace with your EmailJS service ID
-      'template_usv2jef', // Replace with your EmailJS template ID
-      formData,
-      'hXAjj4thBMxE7eg1W' // Replace with your EmailJS public key (user ID)
-    )
-    .then((response) => {
-      console.log('Email sent successfully:', response);
-      setStatus('Email sent successfully!');
-      setFormData({ name: '', email: '', message: '' });
-    })
-    .catch((error) => {
-      console.error('Error sending email:', error);
-      setStatus('Failed to send email. Please try again.');
-    });
-  };
+ 
 
   const whatsappNumber = "+64225618308"; // Replace with actual number
   const instagramHandle = "sheclimbs.skis"; // Replace with actual handle
@@ -62,7 +49,7 @@ const Contact = () => {
 
       <ContactContent>
         <FormSection>
-          <ContactForm onSubmit={handleSubmit}>
+          <ContactForm onSubmit={(e) => handleSubmit(e, formData)}>
             <FormTitle>Send a Message</FormTitle>
             <InputGroup>
               <FormField>

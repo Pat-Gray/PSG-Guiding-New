@@ -145,7 +145,7 @@ const Copyright = styled.p`
 
 const CertificationLogos = styled.div`
   display: flex;
-
+  
   gap: 2rem;
   align-items: center;
   justify-content: center;
@@ -154,6 +154,9 @@ const CertificationLogos = styled.div`
 
 const CertLogo = styled.img`
   height: 100px;
+  @media (max-width: 370px) {
+    height: 70px;
+  }
 `;
 
 export default Footer; 

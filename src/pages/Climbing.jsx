@@ -66,7 +66,28 @@ const Climbing = () => {
           description: "Guiding, instruction and courses To stay safe in the mountains",
           image: '/images/Instruction-1200.webp'
         },
-      
+      {
+        name: "Mount Aspiring",
+        season: "Nov - Apr",
+        highlights: [
+          "One of New Zealand's most iconic climbs",
+          "North West Ridge",
+          "South West Ridge",
+        ],
+        description: "One of New Zealands best mountains which offers the full New Zealand alpine experience.",
+        image: '/images/Aspiring-1200.webp'
+      },
+      {
+        name: "Mount Cook / Aoraki",
+        season: "Nov - Jan",
+        highlights: [
+          "New Zealand's highest mountain",
+          "Lifetime challenge",
+          "For repeat clients only",
+        ],
+        description: "Aoraki / Mount Cook is a beautiful mountain with a range of routes with the Linda Glacier being the easiest.",
+        image: '/images/MountainsNZ-1200.webp'
+      }
       ]
     },
     
@@ -209,6 +230,7 @@ const Climbing = () => {
 
 const ClimbingWrapper = styled.div`
   min-height: 100vh;
+  width: 100%;
 `;
 
 const HeroSection = styled.div`
@@ -225,7 +247,7 @@ const HeroContent = styled.div`
   text-align: center;
   max-width: 800px;
   padding: 0 2rem;
-
+  
   h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
@@ -241,7 +263,11 @@ const HeroContent = styled.div`
 const ContentSection = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
+  
+  @media (min-width: 768px) {
+    padding: 4rem 2rem;
+  }
 `;
 
 const ActivitySection = styled.section`
@@ -257,7 +283,7 @@ const ActivityTitle = styled.h2`
 
 const LocationGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   
   @media (max-width: 768px) {
@@ -289,7 +315,11 @@ const LocationImage = styled.img`
 `;
 
 const LocationContent = styled.div`
-  padding: 2rem;
+  padding: 1rem;
+  
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 const LocationHeader = styled.div`
@@ -352,6 +382,9 @@ const CTATitle = styled.h2`
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-family: var(--font-heading);
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const CTAText = styled.p`
@@ -388,22 +421,21 @@ const PersonalizedSection = styled.section`
 
 const PersonalizedContent = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     
-    & > *:last-child:nth-child(3) {
-      grid-column: 1 / -1;
-      max-width: 500px;
-      justify-self: center;
+    & > * {
+      max-width: 100%;
     }
   }
 
   @media (max-width: 1199px) {
     grid-template-columns: 1fr;
     & > * {
+      width: 100%;
       max-width: 600px;
       margin: 0 auto;
     }

@@ -95,7 +95,7 @@ const Skiing = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl mb-4 font-heading font-bold"
+            className="text-6xl mb-4 font-heading"
           >
             Skiing Adventures
           </motion.h1>
@@ -156,7 +156,7 @@ const Skiing = () => {
 
       <CTASection>
           <CTAContent>
-            <CTATitle>Ready for Your Next Adventure?</CTATitle>
+            <CTATitle className="font-heading">Ready for Your Next Adventure?</CTATitle>
             <CTAText>
               Whether you're new to climbing or an experienced alpinist, 
               let's plan your next mountain objective together.

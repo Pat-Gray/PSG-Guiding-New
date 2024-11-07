@@ -9,10 +9,23 @@ import Overseas from './pages/Overseas';
 import LocationsMap from './pages/Locations';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function App() {
+
+  function ScrollToTop() {
+    const { pathname } = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  
+    return null;
+  }
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

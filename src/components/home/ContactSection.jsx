@@ -1,7 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from 'styled-components';
+import {createEmailHandler} from '../../utils/emailForm';
+import { useState } from 'react';
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = createEmailHandler(setFormData, setStatus);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+
   return (
     <ContactWrapper>
       <ContactContent>
@@ -9,12 +25,12 @@ const ContactSection = () => {
         <ContactText>
           Ready to explore? Get in touch to discuss your mountain objectives and start planning your next trip.
         </ContactText>
-        <ContactForm>
+        <ContactForm onSubmit={(e) => handleSubmit(e, formData)}>
           <InputGroup>
-            <Input type="text" placeholder="Name" />
-            <Input type="email" placeholder="Email" />
+            <Input type="text" placeholder="Name" name="name" value={formData.name} onChange={handleChange}/>
+            <Input type="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange}/>
           </InputGroup>
-          <TextArea placeholder="Tell me about your mountain objectives..." />
+          <TextArea placeholder="Tell me about your mountain objectives..." name="message" value={formData.message} onChange={handleChange}/>
           <SubmitButton type="submit">Send Message</SubmitButton>
         </ContactForm>
       </ContactContent>

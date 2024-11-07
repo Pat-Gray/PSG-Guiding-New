@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import HeroBackground from '../../Images/Stetind.webp';
 import HeroBackgroundTiny from '../../Images/Stetind.webp';
 import MobileBackground from '../../../public/images/ConnieImage-1200.webp';
@@ -82,7 +83,11 @@ const Hero = () => {
       {/* Content */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="text-center text-snow-white max-w-[90%] md:max-w-[800px] px-4">
-          <h1 
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          
             className="font-heading text-4xl md:text-5xl lg:text-[4.2rem] 
                        font-normal mb-3 xs:mb-4 sm:mb-6 tracking-[0.02em] leading-tight"
             style={{ 
@@ -91,23 +96,29 @@ const Hero = () => {
             }}
           >
             Personalized Mountain Experiences
-          </h1>
-          <p 
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="font-body text-lg lg:text-xl 
                        font-light mb-3 xs:mb-4 sm:mb-6 tracking-[0.04em] leading-relaxed opacity-90
                        mx-auto"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           >
             Professional mountain guiding in New Zealand, Canada, and Norway with expertise in technical alpine climbing and ski mountaineering
-          </p>
-          <p 
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}  
             className="font-body text-lg lg:text-xl 
                        font-light mb-3 xs:mb-4 sm:mb-6 tracking-[0.04em] leading-relaxed opacity-90
                        mx-auto"
             style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           >
             Focus on tailored, private guiding experiences
-          </p>
+          </motion.p>
         </div>
       </div>
     </div>

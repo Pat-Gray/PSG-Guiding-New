@@ -32,7 +32,7 @@ const serviceFeatures = [
 export default function ServiceBadges() {
   return (
     <div className="bg-slate-50 py-16">
-      <div className="max-w-[1200px] mx-auto px-8">
+      <div className="max-w-[1200px] mx-auto px-2 sm:px-8">
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
     {serviceFeatures.map((feature, index) => (
       <div 
