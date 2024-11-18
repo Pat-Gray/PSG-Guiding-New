@@ -39,7 +39,7 @@ const Skiing = () => {
             
           ],
           description: "Gain valuable skills and knowledge of avalanches, resuce, and snowpack knowledge.",
-          image: "/images/canadian-backcountry.jpg"
+          image: "/images/snowtest-1200.webp"
         },
         {
           name: "Ski Mountaineering",
