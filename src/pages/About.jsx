@@ -9,6 +9,7 @@ import PetEastRidge from '../Images/petOnEastRidge.webp'
 import GuidePet from '../Images/GuidePet.webp'
 import Pet1 from '../Images/Pet1.webp'
 import NorwayIce from '../Images/PetNorwayIce.webp'
+import { Link } from 'react-router-dom';
 const About = () => {
   
 
@@ -145,13 +146,13 @@ const About = () => {
               Let's discuss your mountain objectives and create an experience 
               tailored to your goals.
             </p>
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="inline-block bg-dawn-orange text-white px-8 py-4 rounded font-medium 
                 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
         </section>
       </div>

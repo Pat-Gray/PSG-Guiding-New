@@ -33,35 +33,35 @@ const Overseas = () => {
         }
       ]
     },
-    {
-      country: "Canada",
-      activities: [
-        {
-          type: "Ice Climbing",
-          locations: [
-            {
-              name: "Canadian Rockies",
-              description: "Challenging ice routes in a breathtaking setting.",
-              season: "December - March",
-              difficulty: "Advanced",
-              image: "/images/ridgeClimbing-1200.webp"
-            }
-          ]
-        },
-        {
-          type: "Skiing",
-          locations: [
-            {
-              name: "Rogers Pass",
-              description: "Legendary backcountry skiing in the heart of the Selkirks.",
-              season: "December - April",
-              difficulty: "Advanced",
-              image: "/images/ridgeClimbing-1200.webp"
-            }
-          ]
-        }
-      ]
-    },
+    // {
+    //   country: "Canada",
+    //   activities: [
+    //     {
+    //       type: "Ice Climbing",
+    //       locations: [
+    //         {
+    //           name: "Canadian Rockies",
+    //           description: "Challenging ice routes in a breathtaking setting.",
+    //           season: "December - March",
+    //           difficulty: "Advanced",
+    //           image: "/images/ridgeClimbing-1200.webp"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       type: "Skiing",
+    //       locations: [
+    //         {
+    //           name: "Rogers Pass",
+    //           description: "Legendary backcountry skiing in the heart of the Selkirks.",
+    //           season: "December - April",
+    //           difficulty: "Advanced",
+    //           image: "/images/ridgeClimbing-1200.webp"
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // },
     {
       country: "Japan",
       activities: [
@@ -82,13 +82,13 @@ const Overseas = () => {
   ];
 
   const otherLocations = [
-    {
-      image: "/images/OtherLocationImage.webp",
-      name: "China",
-      icon: "hiking",
-      activityType: "Activity Type"
-    }
-  ];
+    // {
+    //   image: "/images/OtherLocationImage.webp",
+    //   name: "China",
+    //   icon: "hiking",
+    //   activityType: "Activity Type"
+    // }
+   ];
 
   return (
     <div className="min-h-screen">
@@ -158,7 +158,7 @@ const Overseas = () => {
 
         {/* Other Locations Section */}
         <section className="mb-16">
-          <h2 className="text-4xl text-slate-blue mb-8 font-heading">Other Locations</h2>
+          {/* <h2 className="text-4xl text-slate-blue mb-8 font-heading">Other Locations</h2> */}
           <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
             {otherLocations.map((location, index) => (
               <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md">
