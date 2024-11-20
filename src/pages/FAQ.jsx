@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 // Use optimized images
 const HeroBackground = '/images/instruction2-1200.webp';  // Main image
 const HeroBackgroundTiny = '/images/instruction2-placeholder.webp';  // Blur placeholder
@@ -121,7 +122,9 @@ const FAQ = () => {
       <StillHaveQuestions>
         <h2>Still Have Questions?</h2>
         <p>Can't find what you're looking for? Feel free to get in touch.</p>
-        <ContactButton href="/contact">Contact Us</ContactButton>
+        <Link to="/contact">
+        <ContactButton>Contact Us</ContactButton>
+        </Link>
       </StillHaveQuestions>
     </FAQWrapper>
   );

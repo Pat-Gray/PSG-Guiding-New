@@ -1,0 +1,6 @@
+# https://mountainguide.nz/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mountainguide.nz/sitemap.xml
