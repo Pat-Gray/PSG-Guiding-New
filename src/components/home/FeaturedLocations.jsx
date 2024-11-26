@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { locations } from '../../utils/locations';
 
+
 const OptimizedLocationCard = ({ location }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   
@@ -29,8 +30,8 @@ const OptimizedLocationCard = ({ location }) => {
         <div className="text-snow-white mb-4 text-sm ">
           {location.season}
         </div>
-     
       </div>
+        
     </div>
   );
 };

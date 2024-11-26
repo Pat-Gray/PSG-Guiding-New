@@ -14,7 +14,7 @@ export const locations = [
     id: 1,
     name: 'New Zealand Southern Alps',
     image: Cook,
-    season: 'Nov - Apr',
+    season: 'Jul - Mar',
     description: 'Technical alpine climbing and ski touring in the Southern Alps.',
   },
   {
@@ -61,9 +61,9 @@ export const locations = [
   },
   {
     id: 8,
-    name: 'Ski Touring',
+    name: 'New ZealandSki Touring',
     image: Plateau,
-    season: 'All year',
+    season: 'Jul - Oct',
     description: 'Ski touring in New Zealand and overseas.',
   },
   {

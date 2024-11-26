@@ -95,7 +95,7 @@ const Hero = () => {
               willChange: 'transform'
             }}
           >
-            Personalized Mountain Experiences
+            Personalised Mountain Experiences
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

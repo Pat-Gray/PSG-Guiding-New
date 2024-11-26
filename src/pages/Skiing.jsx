@@ -26,7 +26,8 @@ const Skiing = () => {
           highlights: [
             "Mount Cook National Park",
             "Treble Cone Backcountry",
-            "Remarkables Range"
+            "Remarkables Range",
+            "Mount Aspiring National Park"
           ],
           description: "Explore the amazing terrain of New Zealand's Southern Alps. Perfect for those seeking adventure or those seeking to gain experience and knowledge of the backcountry.",
           image: '/images/plateau-1200.webp'
@@ -46,9 +47,9 @@ const Skiing = () => {
           season: "Jun - Sept",
           highlights: [
             "Mount Cook National Park",
-            
+            "Mount Aspiring National Park"
           ],
-          description: "Ski-Mountaineering for those with high ski ability and want to experience New Zealand's best ski descents",
+          description: "Ski-Mountaineering for those with high ski ability and who want to experience New Zealand's most technical ski descents",
           image: '/images/SkiMountaineeringImage-1200.webp'
         }
       ]

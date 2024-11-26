@@ -13,15 +13,13 @@ const AboutPreview = () => {
         <TextColumn>
           <SectionTitle>About Petrouchka</SectionTitle>
           <GuideText>
-          Petrouchka is a NZMGA-trained IFMGA mountain guide based in the breathtaking landscapes of Wanaka, New Zealand.
-        With a passion for the Alpine Climbing and skiing and a wealth of experience in mountain guiding, Petrouchka is
-        dedicated to providing safe, exhilarating, and unforgettable mountain experiences.
+          As an IFMGA mountain guide based in Wānaka, I get to share the places that have shaped me with others.
+          <br/><br/>
+          My work takes me across some incredible terrain—from New Zealand&apos;s Southern Alps to the quiet mountains of Norway. Each place has taught me something different about climbing, skiing, and myself. Now, I&apos;m focused on guiding here in New Zealand, helping people explore these incredible Southern Alps safely and confidently.
+
     </GuideText>
     <GuideText>
-        Petrouchka's journey into the world of mountain guiding began with a a love for Rock Climbing and Skiing from an
-        early age. This lead her to climb & ski around the globe from Yosemite, Canada, Norway and Australia. She is a
-        IFMGA mountain guides qualified through the NZMGA. She has the skills and expertise to lead climbers and
-        adventurers through some of the most spectacular and demanding mountain landscapes.
+        For me, mountain guiding isn&apos;t just a job. It&apos;s about connecting people with wild places, sharing skills, and creating experiences that stay with you long after you&apos;ve descended the mountain.
           </GuideText>
           
           <LearnMoreButton to="/about">Learn More</LearnMoreButton>

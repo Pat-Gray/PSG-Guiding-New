@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Gallery from '../components/Gallery';
-import ServiceBadges from '../components/common/ServiceBadges';
+import ServiceBadges from '../components/common/ServiceBadgesClimbing';
+import CallToActionForm from '../components/common/CallToActionForm';
 
 const images = [
   '/images/SkiMountaineeringImage-1200.webp',
@@ -60,7 +61,7 @@ const Climbing = () => {
           highlights: [
             "Rope Rescue",
             "Mountaineering Skills",
-            "Cravasse Rescue",
+            "Crevasse Rescue",
             
           ],
           description: "Guiding, instruction and courses To stay safe in the mountains",
@@ -74,7 +75,7 @@ const Climbing = () => {
           "North West Ridge",
           "South West Ridge",
         ],
-        description: "One of New Zealands best mountains which offers the full New Zealand alpine experience.",
+        description: "One of New Zealand's most iconic mountains which offers the full New Zealand alpine experience.",
         image: '/images/Aspiring-1200.webp'
       },
       {
@@ -85,7 +86,7 @@ const Climbing = () => {
           "Lifetime challenge",
           "For repeat clients only",
         ],
-        description: "Aoraki / Mount Cook is a beautiful mountain with a range of routes with the Linda Glacier being the easiest.",
+        description: "A unique and challenging climb which is a highlight of any mountaineering career.",
         image: '/images/MountainsNZ-1200.webp'
       }
       ]
@@ -116,7 +117,6 @@ const Climbing = () => {
         "Goal-oriented climbing", 
         "Skill enhancement", 
         "Personalized coaching", 
-        "Overseas trips"
             ]
     },
     {
@@ -168,6 +168,7 @@ const Climbing = () => {
                       <i className="fas fa-mountain"></i>
                       {highlight}
                     </HighlightItem>
+                    
                   ))}
                 </HighlightsList>
                
