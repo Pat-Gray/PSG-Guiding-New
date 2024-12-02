@@ -36,7 +36,10 @@ export default defineConfig({
         '/contact': 0.7,
         
       },
-      
+      exclude: [
+  
+        '/404' 
+      ],
       lastmod: true,
     }),
   ],
