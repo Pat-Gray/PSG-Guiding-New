@@ -70,10 +70,8 @@ const About = () => {
           <div className="w-full md:w-1/2">
             <h2 className="text-slate-blue text-4xl mb-8 font-heading">My Story</h2>
             <p className="text-slate-blue text-lg leading-relaxed mb-6">
-              Born in New Zealand and raised with a deep connection to the mountains, 
-              I've dedicated my life to exploring and sharing the world's most beautiful 
-              alpine environments. With over a decade of guiding experience across three 
-              continents, I bring technical expertise and local knowledge to every expedition.
+              Born in New Zealand and raised with a deep connection to the mountains, my focuys is exploring and sharing the world's most beautiful 
+              alpine environments. With guiding experience across three continents, I bring technical expertise and local knowledge to every expedition.
             </p>
             <p className="text-slate-blue text-lg leading-relaxed mb-6">
               My journey began in the Southern Alps of New Zealand, where I developed 
